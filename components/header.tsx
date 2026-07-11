@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Header() {
   return (
     <header>
-      <div>
+      <div style={{ textAlign:"center"}}>>
         <Image
           src="/images/logo/project-ai-logo.svg"
           alt="project-ai"
