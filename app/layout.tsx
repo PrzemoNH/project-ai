@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "Twórz strony internetowe, aplikacje i gry z pomocą sztucznej inteligencji.",
 };
 
-export default function root_layout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
