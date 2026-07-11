@@ -44,23 +44,28 @@ button {
   height: auto;
 }
 
-.nav {
+.nav import Image from "next/image";
+
+export default function Header() {
+  return (
+    <header className="header">
+      <div className="logo">
+        <Image
+          src="/images/logo/project-ai-logo.svg"
+          alt="project-ai"
+          width={450}
+          height={125}
+          priority
+        />
+      </div>
+    </header>
+  );
+}
   display: flex;
   gap: 35px;
   margin-top: 15px;
   font-size: 18px;
 }
-
-.nav a {
-  color: #f9fafb;
-  transition: color 0.3s ease;
-}
-
-.nav a:hover {
-  color: #10b981;
-}
-
-
 /* HERO */
 
 .hero {
