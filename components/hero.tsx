@@ -2,15 +2,17 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section>
+    <section className="hero">
+
       <Image
         src="/images/logo/project-ai-icon.svg"
         alt=""
         width={700}
         height={700}
+        className="hero-icon"
       />
 
-      <div>
+      <div className="hero-content">
         <h1>
           Twórz.
           <br />
@@ -33,6 +35,7 @@ export default function Hero() {
           Rozpocznij tworzenie
         </button>
       </div>
+
     </section>
   );
 }
