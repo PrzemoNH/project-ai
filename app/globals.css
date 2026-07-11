@@ -11,9 +11,8 @@ body {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #ffffff;
-  color: #111111;
-  line-height: 1.5;
+  background: #111827;
+  color: #f9fafb;
 }
 
 a {
@@ -24,8 +23,4 @@ a {
 button {
   font-family: inherit;
   cursor: pointer;
-}
-
-main {
-  width: 100%;
 }
