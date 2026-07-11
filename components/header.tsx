@@ -13,9 +13,9 @@ export default function Header() {
       </div>
 
       <nav>
-        <a href="#">start</a>
-        <a href="#">kreator</a>
-        <a href="#">studio</a>
+        <a href="#">Kreator</a>
+        <a href="#">Studio</a>
+        <a href="#">Projekty</a>
       </nav>
     </header>
   );
