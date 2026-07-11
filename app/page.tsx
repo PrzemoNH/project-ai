@@ -1,15 +1,15 @@
-import header from "@/components/header";
-import hero from "@/components/hero";
-import footer from "@/components/footer";
+import Header from "@/components/header";
+import Hero from "@/components/hero";
+import Footer from "@/components/footer";
 
-export default function page() {
+export default function Page() {
   return (
     <>
-      <header />
+      <Header />
       <main>
-        <hero />
+        <Hero />
       </main>
-      <footer />
+      <Footer />
     </>
   );
 }
