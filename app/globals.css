@@ -24,3 +24,31 @@ button {
   font-family: inherit;
   cursor: pointer;
 }
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 50px;
+  background: rgba(17, 24, 39, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+.logo img {
+  width: 320px;
+  height: auto;
+}
+
+.nav {
+  display: flex;
+  gap: 35px;
+  font-size: 18px;
+}
+
+.nav a {
+  color: #f9fafb;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: #10b981;
+}
