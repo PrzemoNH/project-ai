@@ -85,3 +85,56 @@ button {
   z-index: 1;
   text-align: center;
 }
+
+/* ===========================
+   FEATURES
+=========================== */
+
+.features {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.features-subtitle {
+  max-width: 760px;
+  margin: 0 auto 60px;
+  color: #9ca3af;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.feature-card {
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 20px;
+  padding: 35px;
+  transition: transform .25s ease, border-color .25s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  border-color: #2563eb;
+}
+
+.feature-card h3 {
+  font-size: 28px;
+  margin-bottom: 18px;
+}
+
+.feature-card p {
+  color: #d1d5db;
+  line-height: 1.7;
+}
