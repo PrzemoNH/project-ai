@@ -5,10 +5,10 @@ export default function Header() {
     <header>
       <div>
         <Image
-          src="/images/logo/project-ai-icon.svg"
-          alt="project-ai logo"
-          width={50}
-          height={50}
+          src="/images/logo/project-ai-logo.svg"
+          alt="project-ai"
+          width={220}
+          height={60}
         />
       </div>
 
