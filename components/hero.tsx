@@ -1,27 +1,38 @@
+import Image from "next/image";
+
 export default function Hero() {
   return (
     <section>
-      <h1>
-        Twórz.
-        <br />
-        Ucz się.
-        <br />
-        Rozwijaj.
-      </h1>
+      <Image
+        src="/images/logo/project-ai-icon.svg"
+        alt=""
+        width={700}
+        height={700}
+      />
 
-      <h2>
-        Twórz strony internetowe, gry i aplikacje
-        z pomocą sztucznej inteligencji.
-      </h2>
+      <div>
+        <h1>
+          Twórz.
+          <br />
+          Ucz się.
+          <br />
+          Rozwijaj.
+        </h1>
 
-      <p>
-        Project-AI to miejsce, gdzie pomysł zamienia się
-        w działający projekt.
-      </p>
+        <h2>
+          Twórz strony internetowe, gry i aplikacje
+          z pomocą sztucznej inteligencji.
+        </h2>
 
-      <button>
-        Rozpocznij tworzenie
-      </button>
+        <p>
+          Project-AI łączy kreatywność, naukę i technologię
+          w jednym miejscu.
+        </p>
+
+        <button>
+          Rozpocznij tworzenie
+        </button>
+      </div>
     </section>
   );
 }
