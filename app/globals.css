@@ -24,6 +24,10 @@ button {
   font-family: inherit;
   cursor: pointer;
 }
+
+
+/* HEADER */
+
 .header {
   display: flex;
   align-items: center;
@@ -31,6 +35,8 @@ button {
   padding: 20px 50px;
   background: rgba(17, 24, 39, 0.85);
   backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 10;
 }
 
 .logo img {
@@ -46,9 +52,35 @@ button {
 
 .nav a {
   color: #f9fafb;
-  transition: 0.3s;
+  transition: color 0.3s ease;
 }
 
 .nav a:hover {
   color: #10b981;
+}
+
+
+/* HERO */
+
+.hero {
+  position: relative;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-icon {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  opacity: 0.12;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
 }
