@@ -1,18 +1,26 @@
 export default function Hero() {
   return (
     <section>
-      <h1>project-ai</h1>
+      <h1>
+        Twórz.
+        <br />
+        Ucz się.
+        <br />
+        Rozwijaj.
+      </h1>
 
       <h2>
-        twórz strony, gry i aplikacje z pomocą sztucznej inteligencji
+        Twórz strony internetowe, gry i aplikacje
+        z pomocą sztucznej inteligencji.
       </h2>
 
       <p>
-        jedno miejsce do tworzenia, nauki i rozwijania własnych projektów.
+        Project-AI to miejsce, gdzie pomysł zamienia się
+        w działający projekt.
       </p>
 
       <button>
-        rozpocznij tworzenie
+        Rozpocznij tworzenie
       </button>
     </section>
   );
