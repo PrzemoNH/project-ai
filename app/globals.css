@@ -30,9 +30,9 @@ button {
 
 .header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px 50px;
+  padding: 20px 20px;
   background: rgba(17, 24, 39, 0.85);
   backdrop-filter: blur(10px);
   position: relative;
@@ -40,13 +40,14 @@ button {
 }
 
 .logo img {
-  width: 320px;
+  width: 450px;
   height: auto;
 }
 
 .nav {
   display: flex;
   gap: 35px;
+  margin-top: 15px;
   font-size: 18px;
 }
 
