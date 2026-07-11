@@ -3,6 +3,7 @@ import Image from "next/image";
 export default function Header() {
   return (
     <header className="header">
+
       <div className="logo">
         <Image
           src="/images/logo/project-ai-logo.svg"
@@ -18,6 +19,7 @@ export default function Header() {
         <a href="#">Studio</a>
         <a href="#">Projekty</a>
       </nav>
+
     </header>
   );
 }
