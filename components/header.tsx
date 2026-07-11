@@ -7,8 +7,8 @@ export default function Header() {
         <Image
           src="/images/logo/project-ai-logo.svg"
           alt="project-ai"
-          width={320}
-          height={90}
+          width={390}
+          height={100}
         />
       </div>
 
