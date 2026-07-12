@@ -7,81 +7,140 @@ export default function Features() {
       </h2>
 
       <p className="features-subtitle">
-        Wybierz kierunek i rozpocznij pracę
-        z pomocą sztucznej inteligencji.
+        Wybierz rodzaj projektu i rozpocznij pracę
+        razem ze sztuczną inteligencją.
       </p>
 
 
       <div className="creation-grid">
 
-        <div className="creation-card">
-          <div className="icon">🌐</div>
-          <h3>Strona internetowa</h3>
+
+        <article className="creation-card">
+
+          <div className="card-icon">
+            🌐
+          </div>
+
+          <h3>
+            Strona internetowa
+          </h3>
+
           <p>
-            Landing page, portfolio,
-            sklep lub własny pomysł.
+            Twórz strony firmowe,
+            portfolio, blogi i sklepy.
           </p>
-        </div>
+
+        </article>
 
 
-        <div className="creation-card">
-          <div className="icon">🎮</div>
-          <h3>Gra</h3>
+
+        <article className="creation-card">
+
+          <div className="card-icon">
+            🎮
+          </div>
+
+          <h3>
+            Gra
+          </h3>
+
           <p>
-            Twórz gry 2D, 3D
-            i eksperymentuj z pomysłami.
+            Projektuj gry 2D i 3D
+            z pomocą AI.
           </p>
-        </div>
+
+        </article>
 
 
-        <div className="creation-card">
-          <div className="icon">📱</div>
-          <h3>Aplikacja</h3>
+
+        <article className="creation-card">
+
+          <div className="card-icon">
+            📱
+          </div>
+
+          <h3>
+            Aplikacja
+          </h3>
+
           <p>
-            Projektuj aplikacje
-            mobilne i desktopowe.
+            Buduj aplikacje mobilne
+            i desktopowe.
           </p>
-        </div>
+
+        </article>
+
 
       </div>
 
 
-      <h2 className="modules-title">
-        Twoje narzędzia
-      </h2>
+
+      <div className="ai-tools">
 
 
-      <div className="modules-grid">
-
-        <div className="module-card main">
-          <h3>🌱 Kreator AI</h3>
-          <p>
-            Stwórz projekt krok po kroku
-            razem ze sztuczną inteligencją.
-          </p>
-
-          <button>
-            Start →
-          </button>
-        </div>
+        <h2>
+          Twoje narzędzia AI
+        </h2>
 
 
-        <div className="module-card">
-          <h3>🛠 Studio</h3>
-          <p>
-            Edycja kodu i zaawansowane ustawienia.
-          </p>
-        </div>
+
+        <div className="modules-grid">
 
 
-        <div className="module-card">
-          <h3>📁 Projekty</h3>
-          <p>
-            Wszystkie projekty w jednym miejscu.
-          </p>
+          <article className="module-card main">
+
+            <h3>
+              🌱 Kreator AI
+            </h3>
+
+            <p>
+              Prowadź projekt krok po kroku.
+              AI pomoże Ci zaplanować,
+              stworzyć i rozwinąć pomysł.
+            </p>
+
+
+            <button>
+              Rozpocznij →
+            </button>
+
+          </article>
+
+
+
+          <article className="module-card">
+
+            <h3>
+              🛠 Studio
+            </h3>
+
+            <p>
+              Zaawansowana edycja
+              kodu i komponentów.
+            </p>
+
+          </article>
+
+
+
+          <article className="module-card">
+
+            <h3>
+              📁 Projekty
+            </h3>
+
+            <p>
+              Wszystkie projekty
+              w jednym miejscu.
+            </p>
+
+          </article>
+
+
         </div>
 
       </div>
+
 
     </section>
   );
