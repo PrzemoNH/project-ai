@@ -15,21 +15,23 @@ export default function Hero() {
 
       <div className="hero-content">
 
-        <h1>
-          <span className="create-text">
-            Twórz.
-          </span>
-         <br />
+<h1>
+  <span className="create-text">
+    Twórz.
+  </span>
 
-          <span className="learn-text">
-              Ucz się.
-          </span>
-          <br />
+  <br />
 
-          <span className="develop-text">
-              Rozwijaj.
-          </span>
-        </h1>
+  <span className="learn-text">
+    Ucz się.
+  </span>
+
+  <br />
+
+  <span className="develop-text">
+    Rozwijaj.
+  </span>
+</h1>
 
         <p>
           Twoja platforma AI do tworzenia
