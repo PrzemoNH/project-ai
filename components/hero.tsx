@@ -6,7 +6,7 @@ export default function Hero() {
 
       <Image
         src="/images/logo/project-ai-icon.svg"
-        alt=""
+        alt="project-ai"
         width={700}
         height={700}
         className="hero-icon"
