@@ -9,7 +9,7 @@
   <!-- Tło -->
   <rect x="0" y="0" width="680" height="200" rx="28" fill="#111827"/>
 
-  <!-- ZNAK (przeskalowany z wersji ikony 240x240 -> ~160x160) -->
+  <!-- ZNAK -->
   <g transform="translate(28,18) scale(0.667)">
     <path d="M120,182 Q74,172 60,190 Q77,206 120,198 Z" fill="#F9FAFB" opacity="0.95"/>
     <path d="M120,182 Q166,172 180,190 Q163,206 120,198 Z" fill="#F9FAFB" opacity="0.85"/>
@@ -30,10 +30,30 @@
   </g>
 
   <!-- NAPIS -->
-  <text x="228" y="122" font-family="'Segoe UI', 'Poppins', Arial, sans-serif" font-size="58" font-weight="700">
-    <tspan fill="#F9FAFB">Project-</tspan><tspan fill="url(#legGrad)">AI</tspan>
+  <text
+    x="228"
+    y="122"
+    font-family="'Segoe UI', 'Poppins', Arial, sans-serif"
+    font-size="58"
+    font-weight="700">
+    <tspan fill="#F9FAFB">Project-</tspan>
+    <tspan fill="url(#legGrad)">AI</tspan>
   </text>
-  <text x="230" y="152" font-family="'Segoe UI', Arial, sans-serif" font-size="18" letter-spacing="2" fill="#9CA3AF">
-    TWÓRZ · UCZ SIĘ · ROZWIJAJ
+
+  <!-- SLOGAN -->
+  <text
+    x="230"
+    y="152"
+    font-family="'Segoe UI', Arial, sans-serif"
+    font-size="18"
+    letter-spacing="2">
+
+    <tspan fill="#7C3AED">TWÓRZ</tspan>
+    <tspan fill="#9CA3AF"> · </tspan>
+    <tspan fill="#10B981">UCZ SIĘ</tspan>
+    <tspan fill="#9CA3AF"> · </tspan>
+    <tspan fill="#2563EB">ROZWIJAJ</tspan>
+
   </text>
+
 </svg>
