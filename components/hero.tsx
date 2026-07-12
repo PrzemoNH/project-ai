@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="hero">
 
       <Image
-        src="/images/logo/project-ai-icon.svg"
+        src="/images/logo/project-ai-icon-bg.svg"
         alt="Project-AI"
         width={800}
         height={800}
