@@ -5,7 +5,7 @@ export default function Header() {
     <header className="header">
       <div className="logo">
         <Image
-          src="/images/logo/project-ai-logo.svg"
+          src="/images/logo/project-ai-logo-light.svg"
           alt="project-ai"
           width={450}
           height={125}
