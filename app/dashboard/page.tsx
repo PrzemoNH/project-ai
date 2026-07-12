@@ -1,97 +1,39 @@
 import DashboardHeader from "@/components/dashboard-header";
 import DashboardCards from "@/components/DashboardCards";
+
 export default function Dashboard() {
   return (
-    <main className="dashboard">
+    <>
+      <DashboardHeader />
 
-      <h1>
-        Witaj w Project-AI
-      </h1>
+      <main className="dashboard">
 
-      <p className="dashboard-subtitle">
-        Co chcesz dzisiaj zrobić?
-      </p>
+        <h1>
+          Witaj w Project-AI 👋
+        </h1>
+
+        <p className="dashboard-subtitle">
+          Zacznij tworzyć lub kontynuuj swoje projekty.
+        </p>
 
 
-      <div className="dashboard-grid">
+        <DashboardCards />
 
 
-        <section className="dashboard-card create">
-
-          <span className="dashboard-icon">
-            🟣
-          </span>
+        <section className="projects-box">
 
           <h2>
-            Twórz
+            Ostatnie projekty
           </h2>
 
-          <p>
-            Stwórz stronę internetową,
-            grę lub aplikację z pomocą AI.
-          </p>
-
           <button>
-            Nowy projekt →
+            + Nowy projekt
           </button>
 
         </section>
 
 
-
-        <section className="dashboard-card learn">
-
-          <span className="dashboard-icon">
-            🟢
-          </span>
-
-          <h2>
-            Ucz się
-          </h2>
-
-          <p>
-            Poznaj technologie,
-            programowanie i sztuczną inteligencję.
-          </p>
-
-        </section>
-
-
-
-        <section className="dashboard-card develop">
-
-          <span className="dashboard-icon">
-            🔵
-          </span>
-
-          <h2>
-            Rozwijaj
-          </h2>
-
-          <p>
-            Kontynuuj projekty
-            i dodawaj nowe funkcje.
-          </p>
-
-        </section>
-
-
-      </div>
-
-
-      <section className="projects-box">
-
-        <h2>
-          Ostatnie projekty
-        </h2>
-
-        <button>
-          + Nowy projekt
-        </button>
-
-      </section>
-
-      <DashboardCards />
-    </main>
+      </main>
+    </>
   );
 }
