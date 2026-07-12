@@ -80,7 +80,7 @@ button {
 =========================== */
 
 .features {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 80px auto;
   padding: 0 24px;
   text-align: center;
@@ -92,92 +92,139 @@ button {
 }
 
 .features-subtitle {
-  max-width: 760px;
-  margin: 0 auto 60px;
+  max-width: 700px;
+  margin: 0 auto 50px;
   color: #9ca3af;
   line-height: 1.7;
   font-size: 18px;
 }
 
 
-/* GŁÓWNY MODUŁ */
+/* ===========================
+   MAIN FEATURE - KREATOR
+=========================== */
 
 .feature-main {
-  max-width: 800px;
+  max-width: 750px;
   margin: 0 auto;
+
   background: linear-gradient(
     135deg,
     #1f2937,
     #111827
   );
+
   border: 1px solid #374151;
   border-radius: 24px;
-  padding: 50px;
+
+  padding: 40px;
+
   text-align: center;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+
+  transition: 
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .feature-main:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   border-color: #2563eb;
 }
 
 .feature-main h3 {
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-size: 34px;
+  margin-bottom: 16px;
 }
 
 .feature-main p {
   color: #d1d5db;
-  line-height: 1.8;
-  margin-bottom: 30px;
+  line-height: 1.7;
+  margin-bottom: 25px;
 }
 
 .feature-main button {
-  padding: 14px 36px;
+  padding: 14px 34px;
+
   border: none;
   border-radius: 12px;
-  font-size: 18px;
+
+  font-size: 17px;
+
   background: linear-gradient(
     90deg,
     #2563eb,
     #7c3aed
   );
+
   color: white;
+
+  transition: transform 0.2s ease;
+}
+
+.feature-main button:hover {
+  transform: scale(1.05);
 }
 
 
-/* DWA MNIEJSZE MODUŁY */
+/* ===========================
+   SMALL FEATURES
+=========================== */
 
 .features-grid {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  width: 100%;
-  margin-top: 30px;
+
+  gap: 25px;
+
+  margin-top: 25px;
 }
+
 
 .feature-card {
+
   background: #1f2937;
+
   border: 1px solid #374151;
+
   border-radius: 20px;
-  padding: 35px;
-  transition: transform 0.25s ease, border-color 0.25s ease;
+
+  padding: 24px;
+
+  min-height: 150px;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
 }
+
 
 .feature-card:hover {
-  transform: translateY(-8px);
+
+  transform: translateY(-6px);
+
   border-color: #2563eb;
+
 }
+
 
 .feature-card h3 {
-  font-size: 28px;
-  margin-bottom: 18px;
+
+  font-size: 24px;
+
+  margin-bottom: 12px;
+
 }
 
+
 .feature-card p {
+
   color: #d1d5db;
-  line-height: 1.7;
+
+  line-height: 1.5;
+
+  font-size: 15px;
+
 }
 
 
@@ -191,16 +238,23 @@ button {
     width: 320px;
   }
 
+
   .features h2 {
     font-size: 32px;
   }
 
+
   .feature-main {
-    padding: 35px 20px;
+
+    padding: 30px 20px;
+
   }
 
-.features-grid {
-  grid-template-columns: 1fr 1fr;
-}
+
+  .features-grid {
+
+    grid-template-columns: 1fr;
+
+  }
 
 }
