@@ -91,7 +91,7 @@ export default function Dashboard() {
 
       </section>
 
-
+      <DashboardCards />
     </main>
   );
 }
