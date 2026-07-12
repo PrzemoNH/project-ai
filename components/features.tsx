@@ -3,141 +3,84 @@ export default function Features() {
     <section className="features">
 
       <h2>
-        Co chcesz stworzyć?
+        Poznaj możliwości Project-AI
       </h2>
 
+
       <p className="features-subtitle">
-        Wybierz rodzaj projektu i rozpocznij pracę
-        razem ze sztuczną inteligencją.
+        Twórz strony internetowe, gry i aplikacje
+        z pomocą sztucznej inteligencji.
       </p>
 
 
-      <div className="creation-grid">
+
+      <div className="features-grid">
 
 
-        <article className="creation-card">
+        <article className="feature-card creator">
 
-          <div className="card-icon">
-            🌐
+          <div className="icon">
+            🌱
           </div>
 
           <h3>
-            Strona internetowa
+            Kreator AI
           </h3>
 
           <p>
-            Twórz strony firmowe,
-            portfolio, blogi i sklepy.
+            Prowadź projekt krok po kroku.
+            AI pomoże Ci zaplanować, stworzyć
+            i rozwinąć Twój pomysł.
+          </p>
+
+          <button>
+            Rozpocznij →
+          </button>
+
+        </article>
+
+
+
+
+        <article className="feature-card studio">
+
+          <div className="icon">
+            🛠
+          </div>
+
+          <h3>
+            Studio AI
+          </h3>
+
+          <p>
+            Zaawansowana edycja kodu,
+            komponentów i ustawień projektu.
           </p>
 
         </article>
 
 
 
-        <article className="creation-card">
 
-          <div className="card-icon">
-            🎮
+
+        <article className="feature-card projects">
+
+          <div className="icon">
+            📁
           </div>
 
           <h3>
-            Gra
+            Projekty
           </h3>
 
           <p>
-            Projektuj gry 2D i 3D
-            z pomocą AI.
+            Wszystkie Twoje projekty
+            w jednym miejscu.
           </p>
 
         </article>
 
 
-
-        <article className="creation-card">
-
-          <div className="card-icon">
-            📱
-          </div>
-
-          <h3>
-            Aplikacja
-          </h3>
-
-          <p>
-            Buduj aplikacje mobilne
-            i desktopowe.
-          </p>
-
-        </article>
-
-
-      </div>
-
-
-
-      <div className="ai-tools">
-
-
-        <h2>
-          Twoje narzędzia AI
-        </h2>
-
-
-
-        <div className="modules-grid">
-
-
-          <article className="module-card main">
-
-            <h3>
-              🌱 Kreator AI
-            </h3>
-
-            <p>
-              Prowadź projekt krok po kroku.
-              AI pomoże Ci zaplanować,
-              stworzyć i rozwinąć pomysł.
-            </p>
-
-
-            <button>
-              Rozpocznij →
-            </button>
-
-          </article>
-
-
-
-          <article className="module-card">
-
-            <h3>
-              🛠 Studio
-            </h3>
-
-            <p>
-              Zaawansowana edycja
-              kodu i komponentów.
-            </p>
-
-          </article>
-
-
-
-          <article className="module-card">
-
-            <h3>
-              📁 Projekty
-            </h3>
-
-            <p>
-              Wszystkie projekty
-              w jednym miejscu.
-            </p>
-
-          </article>
-
-
-        </div>
 
       </div>
 
