@@ -16,8 +16,12 @@ export default function Dashboard() {
 
         <section className="dashboard-card create">
 
+          <span className="dashboard-icon">
+            🟣
+          </span>
+
           <h2>
-            🟣 Twórz
+            Twórz
           </h2>
 
           <p>
@@ -25,14 +29,22 @@ export default function Dashboard() {
             grę lub aplikację z pomocą AI.
           </p>
 
+          <button>
+            Nowy projekt →
+          </button>
+
         </section>
 
 
 
         <section className="dashboard-card learn">
 
+          <span className="dashboard-icon">
+            🟢
+          </span>
+
           <h2>
-            🟢 Ucz się
+            Ucz się
           </h2>
 
           <p>
@@ -46,8 +58,12 @@ export default function Dashboard() {
 
         <section className="dashboard-card develop">
 
+          <span className="dashboard-icon">
+            🔵
+          </span>
+
           <h2>
-            🔵 Rozwijaj
+            Rozwijaj
           </h2>
 
           <p>
