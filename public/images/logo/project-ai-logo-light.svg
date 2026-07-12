@@ -161,16 +161,32 @@
 
   <!-- SLOGAN -->
 
-  <text 
-    x="230"
-    y="152"
-    font-family="'Segoe UI', Arial, sans-serif"
-    font-size="18"
-    letter-spacing="2"
-    fill="#9CA3AF"
-  >
-    TWÓRZ · UCZ SIĘ · ROZWIJAJ
-  </text>
+<text 
+  x="230"
+  y="152"
+  font-family="'Segoe UI', Arial, sans-serif"
+  font-size="18"
+  letter-spacing="2"
+>
 
+  <tspan fill="#7C3AED">
+    TWÓRZ
+  </tspan>
 
-</svg>
+  <tspan fill="#9CA3AF">
+    ·
+  </tspan>
+
+  <tspan fill="#10B981">
+    UCZ SIĘ
+  </tspan>
+
+  <tspan fill="#9CA3AF">
+    ·
+  </tspan>
+
+  <tspan fill="#2563EB">
+    ROZWIJAJ
+  </tspan>
+
+</text>
