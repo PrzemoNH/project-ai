@@ -10,9 +10,11 @@ export default function Hero() {
         width={700}
         height={700}
         className="hero-icon"
+        priority
       />
 
       <div className="hero-content">
+
         <h1>
           Twórz.
           <br />
@@ -21,19 +23,12 @@ export default function Hero() {
           Rozwijaj.
         </h1>
 
-        <h2>
-          Twórz strony internetowe, gry i aplikacje
-          z pomocą sztucznej inteligencji.
-        </h2>
-
-        <p>
-          Project-AI łączy kreatywność, naukę i technologię
-          w jednym miejscu.
+        <p className="hero-subtitle">
+          Twoja platforma do tworzenia
+          <br />
+          stron, aplikacji i gier z pomocą AI.
         </p>
 
-        <button>
-          Rozpocznij tworzenie
-        </button>
       </div>
 
     </section>
