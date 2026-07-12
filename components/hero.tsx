@@ -6,9 +6,9 @@ export default function Hero() {
 
       <Image
         src="/images/logo/project-ai-icon.svg"
-        alt="project-ai"
-        width={700}
-        height={700}
+        alt="Project-AI"
+        width={800}
+        height={800}
         className="hero-icon"
         priority
       />
@@ -20,14 +20,26 @@ export default function Hero() {
           <br />
           Ucz się.
           <br />
-          Rozwijaj.
+          <span>Rozwijaj.</span>
         </h1>
 
-        <p className="hero-subtitle">
-          Twoja platforma do tworzenia
+        <p>
+          Twoja platforma AI do tworzenia
           <br />
-          stron, aplikacji i gier z pomocą AI.
+          stron internetowych, gier i aplikacji.
         </p>
+
+        <div className="hero-buttons">
+
+          <button className="primary-button">
+            Rozpocznij tworzenie →
+          </button>
+
+          <button className="secondary-button">
+            Zobacz możliwości
+          </button>
+
+        </div>
 
       </div>
 
