@@ -53,7 +53,7 @@ button {
 
 .hero {
   position: relative;
-  min-height: 600px;
+  min-height: 520px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -72,6 +72,7 @@ button {
   position: relative;
   z-index: 1;
   text-align: center;
+  transform: translateY(-35px);
 }
 
 
@@ -81,7 +82,7 @@ button {
 
 .features {
   max-width: 1100px;
-  margin: 80px auto;
+  margin: 40px auto 80px;
   padding: 0 24px;
   text-align: center;
 }
@@ -101,7 +102,7 @@ button {
 
 
 /* ===========================
-   MAIN FEATURE - KREATOR
+   MAIN FEATURE - KREATOR AI
 =========================== */
 
 .feature-main {
@@ -121,7 +122,7 @@ button {
 
   text-align: center;
 
-  transition: 
+  transition:
     transform 0.3s ease,
     border-color 0.3s ease;
 }
@@ -172,11 +173,8 @@ button {
 
 .features-grid {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-
   gap: 25px;
-
   margin-top: 25px;
 }
 
@@ -238,23 +236,24 @@ button {
     width: 320px;
   }
 
+  .hero {
+    min-height: 450px;
+  }
+
+  .hero-content {
+    transform: translateY(-20px);
+  }
 
   .features h2 {
     font-size: 32px;
   }
 
-
   .feature-main {
-
     padding: 30px 20px;
-
   }
 
-
   .features-grid {
-
     grid-template-columns: 1fr;
-
   }
 
 }
