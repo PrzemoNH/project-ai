@@ -90,13 +90,9 @@ button {
 }
 
 
-.hero h1 span {
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-
-/* Kolory etapów Project-AI */
+/* ===========================
+   KOLORY PROJECT-AI
+=========================== */
 
 .create-text {
   color: #7C3AED;
@@ -304,6 +300,127 @@ button {
 
 
 /* ===========================
+   DASHBOARD
+=========================== */
+
+.dashboard {
+
+  min-height: calc(100vh - 100px);
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 60px 30px;
+
+  text-align: center;
+
+}
+
+
+.dashboard h1 {
+
+  font-size: 56px;
+
+  margin-bottom: 15px;
+
+}
+
+
+.dashboard-subtitle {
+
+  font-size: 24px;
+
+  color: #9ca3af;
+
+  margin-bottom: 60px;
+
+}
+
+
+.dashboard-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(3,1fr);
+
+  gap: 30px;
+
+}
+
+
+.dashboard-card {
+
+  background:#1f2937;
+
+  border:1px solid #374151;
+
+  border-radius:30px;
+
+  padding:45px 35px;
+
+  text-align:left;
+
+  transition:.3s;
+
+}
+
+
+.dashboard-card:hover {
+
+  transform:translateY(-10px);
+
+}
+
+
+.dashboard-icon {
+
+  font-size:50px;
+
+}
+
+
+.dashboard-card h2 {
+
+  font-size:32px;
+
+  margin:20px 0 15px;
+
+}
+
+
+.dashboard-card p {
+
+  color:#d1d5db;
+
+  line-height:1.7;
+
+}
+
+
+.create {
+
+  border-color:#7C3AED;
+
+}
+
+
+.learn {
+
+  border-color:#10B981;
+
+}
+
+
+.develop {
+
+  border-color:#2563EB;
+
+}
+
+
+
+/* ===========================
    MOBILE
 =========================== */
 
@@ -311,21 +428,29 @@ button {
 @media(max-width:768px){
 
   .hero h1 {
-    font-size: 55px;
+    font-size:55px;
   }
 
 
   .creation-grid,
-  .modules-grid {
+  .modules-grid,
+  .dashboard-grid {
 
-    grid-template-columns: 1fr;
+    grid-template-columns:1fr;
 
   }
 
 
   .logo img {
 
-    width: 320px;
+    width:320px;
+
+  }
+
+
+  .dashboard h1 {
+
+    font-size:42px;
 
   }
 
