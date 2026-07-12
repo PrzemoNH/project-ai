@@ -151,8 +151,9 @@ button {
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 30px;
+  width: 100%;
   margin-top: 30px;
 }
 
@@ -198,8 +199,8 @@ button {
     padding: 35px 20px;
   }
 
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
+.features-grid {
+  grid-template-columns: 1fr 1fr;
+}
 
 }
