@@ -1,4 +1,5 @@
 import DashboardHeader from "@/components/dashboard-header";
+import DashboardCards from "@/components/DashboardCards";
 export default function Dashboard() {
   return (
     <main className="dashboard">
