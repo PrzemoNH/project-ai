@@ -91,14 +91,23 @@ button {
 
 
 .hero h1 span {
-  background: linear-gradient(
-    90deg,
-    #2563eb,
-    #7c3aed
-  );
-
   -webkit-background-clip: text;
   color: transparent;
+}
+
+
+/* Kolory etapów Project-AI */
+
+.create-text {
+  color: #7C3AED;
+}
+
+.learn-text {
+  color: #10B981;
+}
+
+.develop-text {
+  color: #2563EB;
 }
 
 
