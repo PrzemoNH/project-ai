@@ -2,25 +2,24 @@ export default function Features() {
   return (
     <section className="features">
 
-      <h2>Wybierz moduł</h2>
+      <h2>— Wybierz moduł —</h2>
 
-      <p className="features-subtitle">
-        Wszystko, czego potrzebujesz do tworzenia z pomocą AI,
-        w jednym miejscu.
-      </p>
 
       <div className="feature-main">
 
         <h3>🌱 Kreator AI</h3>
 
         <p>
-          Twórz strony internetowe, aplikacje i gry krok po kroku
+          Stwórz nowy projekt krok po kroku
           z pomocą sztucznej inteligencji.
         </p>
 
-        <button>Rozpocznij →</button>
+        <button>
+          Rozpocznij tworzenie →
+        </button>
 
       </div>
+
 
       <div className="features-grid">
 
@@ -29,22 +28,35 @@ export default function Features() {
           <h3>🛠 Studio</h3>
 
           <p>
-            Edytuj projekt, kod i ustawienia.
+            Edycja kodu, komponentów
+            i ustawień projektu.
           </p>
 
         </article>
+
 
         <article className="feature-card">
 
           <h3>📁 Projekty</h3>
 
           <p>
-            Zarządzaj wszystkimi swoimi projektami.
+            Wszystkie Twoje projekty
+            w jednym miejscu.
           </p>
 
         </article>
 
+
       </div>
+
+
+      <p className="platform-description">
+
+        Project-AI łączy kreatywność,
+        naukę i technologię w jednym miejscu.
+
+      </p>
+
 
     </section>
   );
