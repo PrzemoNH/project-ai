@@ -26,13 +26,15 @@ button {
 }
 
 
-/* HEADER */
+/* ===========================
+   HEADER
+=========================== */
 
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 20px;
+  padding: 20px;
   background: rgba(17, 24, 39, 0.85);
   backdrop-filter: blur(10px);
   position: relative;
@@ -44,29 +46,10 @@ button {
   height: auto;
 }
 
-.nav import Image from "next/image";
 
-export default function Header() {
-  return (
-    <header className="header">
-      <div className="logo">
-        <Image
-          src="/images/logo/project-ai-logo.svg"
-          alt="project-ai"
-          width={450}
-          height={125}
-          priority
-        />
-      </div>
-    </header>
-  );
-}
-  display: flex;
-  gap: 35px;
-  margin-top: 15px;
-  font-size: 18px;
-}
-/* HERO */
+/* ===========================
+   HERO
+=========================== */
 
 .hero {
   position: relative;
@@ -90,6 +73,7 @@ export default function Header() {
   z-index: 1;
   text-align: center;
 }
+
 
 /* ===========================
    FEATURES
@@ -115,14 +99,27 @@ export default function Header() {
   font-size: 18px;
 }
 
+
+/* GŁÓWNY MODUŁ */
+
 .feature-main {
   max-width: 800px;
   margin: 0 auto;
-  background: #1f2937;
+  background: linear-gradient(
+    135deg,
+    #1f2937,
+    #111827
+  );
   border: 1px solid #374151;
   border-radius: 24px;
   padding: 50px;
   text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-main:hover {
+  transform: translateY(-8px);
+  border-color: #2563eb;
 }
 
 .feature-main h3 {
@@ -141,9 +138,16 @@ export default function Header() {
   border: none;
   border-radius: 12px;
   font-size: 18px;
-  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  background: linear-gradient(
+    90deg,
+    #2563eb,
+    #7c3aed
+  );
   color: white;
 }
+
+
+/* DWA MNIEJSZE MODUŁY */
 
 .features-grid {
   display: grid;
@@ -157,7 +161,7 @@ export default function Header() {
   border: 1px solid #374151;
   border-radius: 20px;
   padding: 35px;
-  transition: transform .25s ease, border-color .25s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
 .feature-card:hover {
@@ -173,4 +177,29 @@ export default function Header() {
 .feature-card p {
   color: #d1d5db;
   line-height: 1.7;
+}
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 768px) {
+
+  .logo img {
+    width: 320px;
+  }
+
+  .features h2 {
+    font-size: 32px;
+  }
+
+  .feature-main {
+    padding: 35px 20px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
 }
