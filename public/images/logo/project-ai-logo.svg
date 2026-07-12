@@ -6,9 +6,6 @@
     </linearGradient>
   </defs>
 
-  <!-- Tło -->
-  <rect x="0" y="0" width="680" height="200" rx="28" fill="#111827"/>
-
   <!-- ZNAK -->
   <g transform="translate(28,18) scale(0.667)">
     <path d="M120,182 Q74,172 60,190 Q77,206 120,198 Z" fill="#F9FAFB" opacity="0.95"/>
