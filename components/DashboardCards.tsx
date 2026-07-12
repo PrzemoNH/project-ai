@@ -2,6 +2,7 @@ export default function DashboardCards() {
   return (
     <section className="dashboard-cards">
 
+
       <article className="dashboard-card create">
 
         <div className="dashboard-icon">
@@ -9,7 +10,7 @@ export default function DashboardCards() {
         </div>
 
         <h2>
-          Twórz
+          Nowy projekt
         </h2>
 
         <p>
@@ -17,41 +18,55 @@ export default function DashboardCards() {
           grę lub aplikację z pomocą AI.
         </p>
 
-      </article>
-
-
-      <article className="dashboard-card learn">
-
-        <div className="dashboard-icon">
-          🟢
-        </div>
-
-        <h2>
-          Ucz się
-        </h2>
-
-        <p>
-          Poznaj technologie,
-          programowanie i sztuczną inteligencję.
-        </p>
+        <button>
+          Rozpocznij →
+        </button>
 
       </article>
 
 
-      <article className="dashboard-card develop">
+
+      <article className="dashboard-card projects">
 
         <div className="dashboard-icon">
-          🔵
+          📁
         </div>
 
         <h2>
-          Rozwijaj
+          Moje projekty
         </h2>
 
         <p>
-          Kontynuuj projekty
-          i dodawaj nowe funkcje.
+          Otwieraj zapisane projekty,
+          kontynuuj pracę i rozwijaj funkcje.
         </p>
+
+        <button>
+          Zobacz projekty →
+        </button>
+
+      </article>
+
+
+
+      <article className="dashboard-card studio">
+
+        <div className="dashboard-icon">
+          🤖
+        </div>
+
+        <h2>
+          AI Studio
+        </h2>
+
+        <p>
+          Pracuj z AI nad kodem,
+          wyglądem i funkcjami projektu.
+        </p>
+
+        <button>
+          Otwórz Studio →
+        </button>
 
       </article>
 
