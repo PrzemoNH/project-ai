@@ -9,16 +9,17 @@ export default function DashboardCards() {
         </div>
 
         <h2>
-          Nowy projekt
+          Twórz
         </h2>
 
         <p>
-          Stwórz stronę internetową,
-          grę lub aplikację z pomocą AI.
+          Rozpocznij nowy projekt.
+          Twórz strony internetowe,
+          aplikacje i gry z pomocą AI.
         </p>
 
         <button>
-          Rozpocznij →
+          Nowy projekt →
         </button>
 
       </article>
@@ -27,20 +28,21 @@ export default function DashboardCards() {
       <article className="dashboard-card projects">
 
         <div className="dashboard-icon">
-          📁
+          🔵
         </div>
 
         <h2>
-          Moje projekty
+          Rozwijaj
         </h2>
 
         <p>
-          Otwieraj zapisane projekty,
-          kontynuuj pracę i rozwijaj funkcje.
+          Otwieraj swoje projekty,
+          dodawaj funkcje i ulepszaj
+          je razem z AI.
         </p>
 
         <button>
-          Zobacz projekty →
+          Moje projekty →
         </button>
 
       </article>
@@ -49,23 +51,25 @@ export default function DashboardCards() {
       <article className="dashboard-card studio">
 
         <div className="dashboard-icon">
-          🤖
+          🟢
         </div>
 
         <h2>
-          AI Studio
+          Ucz się
         </h2>
 
         <p>
-          Pracuj z AI nad kodem,
-          wyglądem i funkcjami projektu.
+          Poznawaj kod, ucz się
+          programowania i korzystaj
+          z pomocy AI.
         </p>
 
         <button>
-          Otwórz Studio →
+          AI Studio →
         </button>
 
       </article>
+
 
     </section>
   );
