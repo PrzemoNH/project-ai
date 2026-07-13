@@ -1,5 +1,6 @@
 import DashboardHeader from "@/components/dashboard/dashboard-header";
 import DashboardCards from "@/components/dashboard/DashboardCards";
+import RecentProjects from "@/components/dashboard/RecentProjects";
 
 export default function Dashboard() {
   return (
@@ -18,17 +19,7 @@ export default function Dashboard() {
 
         <DashboardCards />
 
-        <section className="projects-box">
-
-          <h2>
-            Ostatnie projekty
-          </h2>
-
-          <button>
-            + Nowy projekt
-          </button>
-
-        </section>
+        <RecentProjects />
 
       </main>
     </>
