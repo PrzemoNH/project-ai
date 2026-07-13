@@ -16,9 +16,7 @@ export default function Dashboard() {
           Zacznij tworzyć lub kontynuuj swoje projekty.
         </p>
 
-
         <DashboardCards />
-
 
         <section className="projects-box">
 
@@ -31,7 +29,6 @@ export default function Dashboard() {
           </button>
 
         </section>
-
 
       </main>
     </>
