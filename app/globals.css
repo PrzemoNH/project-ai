@@ -90,57 +90,26 @@ button {
    KOLORY PROJECT-AI
 =========================== */
 
-.hero h1 span {
-
-  background: none;
-
-  -webkit-background-clip: unset;
-
-  -webkit-text-fill-color: unset;
-
-}
-
+/* ===========================
+   KOLORY PROJECT-AI
+=========================== */
 
 .create-text {
-
-  color:#7C3AED !important;
-
+  color: #7C3AED;
 }
-
 
 .learn-text {
-
-  color:#10B981 !important;
-
+  color: #10B981;
 }
-
 
 .develop-text {
-
-  color:#2563EB !important;
-
+  color: #2563EB;
 }
-
 
 .hero p {
-
-  margin-top:20px;
-  font-size:24px;
-  color:#d1d5db;
-
-}
-
-
-.create-text {
-  color:#7C3AED;
-}
-
-.learn-text {
-  color:#10B981;
-}
-
-.develop-text {
-  color:#2563EB;
+  margin-top: 20px;
+  font-size: 24px;
+  color: #d1d5db;
 }
 
 
