@@ -17,7 +17,9 @@ export default function DashboardHeader() {
         </button>
 
         <button className="header-profile">
-          👤 Przemysław
+
+          👤 Konto ⚠️
+
         </button>
 
       </div>
