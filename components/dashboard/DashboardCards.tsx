@@ -18,7 +18,7 @@ export default function DashboardCards() {
           aplikacje i gry z pomocą AI.
         </p>
 
-        <button>
+        <button className="card-button create-button">
           Nowy projekt →
         </button>
 
@@ -41,7 +41,7 @@ export default function DashboardCards() {
           je razem z AI.
         </p>
 
-        <button>
+        <button className="card-button projects-button">
           Moje projekty →
         </button>
 
@@ -64,7 +64,7 @@ export default function DashboardCards() {
           z pomocy AI.
         </p>
 
-        <button>
+        <button className="card-button studio-button">
           AI Studio →
         </button>
 
