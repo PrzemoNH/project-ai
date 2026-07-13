@@ -1,28 +1,26 @@
+import Image from "next/image";
+
 export default function DashboardHeader() {
   return (
     <header className="dashboard-header">
 
       <div className="dashboard-logo">
-        🤖 <span>Project-AI</span>
+
+        <Image
+          src="/images/logo/project-ai-logo.svg"
+          alt="Project-AI"
+          width={180}
+          height={60}
+          priority
+        />
+
       </div>
 
-      <div className="dashboard-actions">
 
-        <button className="header-profile">
-        👤 Konto
+      <button className="dashboard-account">
+        👤 Konto ⚠️
       </button>
 
-        <button className="header-button" aria-label="Ustawienia">
-          ⚙️
-        </button>
-
-        <button className="header-profile">
-
-          👤 Konto ⚠️
-
-        </button>
-
-      </div>
 
     </header>
   );
