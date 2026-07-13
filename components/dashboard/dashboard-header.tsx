@@ -8,9 +8,9 @@ export default function DashboardHeader() {
 
       <div className="dashboard-actions">
 
-        <button className="header-button" aria-label="Powiadomienia">
-          🔔
-        </button>
+        <button className="header-profile">
+        👤 Konto
+      </button>
 
         <button className="header-button" aria-label="Ustawienia">
           ⚙️
