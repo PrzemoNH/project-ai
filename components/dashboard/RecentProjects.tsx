@@ -1,11 +1,15 @@
-export default function RecentProjects()
+export default function RecentProjects() {
+  return (
+    <section className="projects-box">
 
-<section className="projects-box">
-  <h2>
-    Ostatnie projekty
-  </h2>
+      <h2>
+        Ostatnie projekty
+      </h2>
 
-  <button>
-    + Nowy projekt
-  </button>
-</section>
+      <button>
+        + Nowy projekt
+      </button>
+
+    </section>
+  );
+}
