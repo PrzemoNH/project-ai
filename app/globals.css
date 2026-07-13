@@ -707,3 +707,88 @@ button {
   border-color: #2563EB;
 
 }
+/* ===========================
+   DASHBOARD HEADER
+=========================== */
+
+.dashboard-header {
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  max-width:1200px;
+
+  margin:0 auto;
+
+  padding:20px 30px;
+
+}
+
+
+.dashboard-logo{
+
+  width:220px;
+  height:auto;
+
+}
+
+
+.dashboard-account{
+
+  background:#1f2937;
+
+  color:white;
+
+  border:1px solid #374151;
+
+  border-radius:14px;
+
+  padding:12px 18px;
+
+  font-size:16px;
+
+}
+
+
+/* ===========================
+   DASHBOARD BACKGROUND
+=========================== */
+
+.dashboard{
+
+  position:relative;
+
+  overflow:hidden;
+
+}
+
+
+.dashboard-bg{
+
+  position:absolute;
+
+  right:-180px;
+
+  top:40px;
+
+  width:850px;
+
+  height:auto;
+
+  opacity:.05;
+
+  pointer-events:none;
+
+  z-index:0;
+
+}
+
+
+.dashboard>*{
+
+  position:relative;
+
+  z-index:1;
+
+}
