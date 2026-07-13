@@ -434,6 +434,67 @@ button {
 
   color:white;
 
+  font-size:16px;
+
+  font-weight:600;
+
+  transition:.3s;
+
+}
+
+
+/* ===========================
+   DASHBOARD CARD BUTTONS
+=========================== */
+
+
+.create-button {
+
+  background:#7C3AED;
+
+}
+
+
+.create-button:hover {
+
+  background:#6D28D9;
+
+  transform:translateY(-2px);
+
+}
+
+
+
+.projects-button {
+
+  background:#2563EB;
+
+}
+
+
+.projects-button:hover {
+
+  background:#1D4ED8;
+
+  transform:translateY(-2px);
+
+}
+
+
+
+.studio-button {
+
+  background:#10B981;
+
+}
+
+
+.studio-button:hover {
+
+  background:#059669;
+
+  transform:translateY(-2px);
+
 }
 
 
