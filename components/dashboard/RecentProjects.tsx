@@ -1,15 +1,9 @@
 export default function RecentProjects() {
   return (
     <section className="projects-box">
-
       <h2>
-        Ostatnie projekty
+        TEST RECENT PROJECTS
       </h2>
-
-      <button>
-        + Nowy projekt
-      </button>
-
     </section>
   );
 }
