@@ -1,4 +1,4 @@
-import DashboardHeader from "@/components/dashboard-header";
+components/dashboard/dashboard-header.tsx
 import DashboardCards from "@/components/dashboard/DashboardCards";
 
 export default function Dashboard() {
