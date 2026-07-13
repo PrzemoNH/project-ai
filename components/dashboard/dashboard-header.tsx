@@ -2,23 +2,25 @@ export default function DashboardHeader() {
   return (
     <header className="dashboard-header">
 
-      <div className="dashboard-brand">
-        Project-AI
+      <div className="dashboard-logo">
+        🤖 <span>Project-AI</span>
       </div>
 
+      <div className="dashboard-actions">
 
-      <div className="dashboard-user">
+        <button className="header-button" aria-label="Powiadomienia">
+          🔔
+        </button>
 
-        <span className="user-icon">
-          👤
-        </span>
+        <button className="header-button" aria-label="Ustawienia">
+          ⚙️
+        </button>
 
-        <span>
-          Użytkownik
-        </span>
+        <button className="header-profile">
+          👤 Przemysław
+        </button>
 
       </div>
-
 
     </header>
   );
