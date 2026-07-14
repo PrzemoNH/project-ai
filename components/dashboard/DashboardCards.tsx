@@ -5,94 +5,103 @@ export default function DashboardCards() {
     <section className="dashboard-cards">
 
 
-      <article className="dashboard-card create">
-
-        <div className="card-background-icon">
-          <Image
-            src="/images/logo/project-ai-icon-bg.svg"
-            alt=""
-            width={260}
-            height={260}
-          />
-        </div>
-
-
-        <h2>
-          Twórz
-        </h2>
-
-        <p>
-          Rozpocznij nowy projekt.
-          Twórz strony internetowe,
-          aplikacje i gry z pomocą AI.
-        </p>
-
-
-        <button className="card-button create-button">
-          Nowy projekt →
-        </button>
-
-      </article>
-
-
-
-      <article className="dashboard-card projects">
-
-        <div className="card-background-icon">
-          <Image
-            src="/images/logo/project-ai-icon-bg.svg"
-            alt=""
-            width={260}
-            height={260}
-          />
-        </div>
-
-
-        <h2>
-          Rozwijaj
-        </h2>
-
-        <p>
-          Otwieraj swoje projekty,
-          dodawaj funkcje i ulepszaj
-          je razem z AI.
-        </p>
-
-
-        <button className="card-button projects-button">
-          Moje projekty →
-        </button>
-
-      </article>
-
-
+      {/* UCZ SIĘ */}
 
       <article className="dashboard-card studio">
 
-        <div className="card-background-icon">
-          <Image
-            src="/images/logo/project-ai-icon-bg.svg"
-            alt=""
-            width={260}
-            height={260}
-          />
+        <Image
+          src="/images/logo/project-ai-icon-bg.svg"
+          alt=""
+          width={220}
+          height={220}
+          className="card-background-icon"
+        />
+
+        <div className="card-content">
+
+          <h2 className="learn-title">
+            Ucz się
+          </h2>
+
+          <p>
+            Poznawaj kod, ucz się
+            programowania i korzystaj
+            z pomocy AI.
+          </p>
+
+          <button className="card-button studio-button">
+            AI Studio →
+          </button>
+
         </div>
 
-
-        <h2>
-          Ucz się
-        </h2>
-
-        <p>
-          Poznawaj kod, ucz się
-          programowania i korzystaj
-          z pomocy AI.
-        </p>
+      </article>
 
 
-        <button className="card-button studio-button">
-          AI Studio →
-        </button>
+
+      {/* ROZWIJAJ */}
+
+      <article className="dashboard-card projects">
+
+        <Image
+          src="/images/logo/project-ai-icon-bg.svg"
+          alt=""
+          width={220}
+          height={220}
+          className="card-background-icon"
+        />
+
+        <div className="card-content">
+
+          <h2 className="develop-title">
+            Rozwijaj
+          </h2>
+
+          <p>
+            Otwieraj swoje projekty,
+            dodawaj funkcje i ulepszaj
+            je razem z AI.
+          </p>
+
+          <button className="card-button projects-button">
+            Moje projekty →
+          </button>
+
+        </div>
+
+      </article>
+
+
+
+      {/* TWÓRZ */}
+
+      <article className="dashboard-card create">
+
+        <Image
+          src="/images/logo/project-ai-icon-bg.svg"
+          alt=""
+          width={220}
+          height={220}
+          className="card-background-icon"
+        />
+
+        <div className="card-content">
+
+          <h2 className="create-title">
+            Twórz
+          </h2>
+
+          <p>
+            Rozpocznij nowy projekt.
+            Twórz strony internetowe,
+            aplikacje i gry z pomocą AI.
+          </p>
+
+          <button className="card-button create-button">
+            Nowy projekt →
+          </button>
+
+        </div>
 
       </article>
 
