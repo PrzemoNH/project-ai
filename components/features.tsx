@@ -8,8 +8,8 @@ export default function Features() {
 
 
       <p className="features-subtitle">
-        Twórz strony internetowe, gry i aplikacje
-        z pomocą sztucznej inteligencji.
+        Jeden system AI do tworzenia,
+        rozwijania i nauki projektów.
       </p>
 
 
@@ -17,21 +17,27 @@ export default function Features() {
       <div className="features-grid">
 
 
+        {/* KREATOR AI */}
+
         <article className="feature-card creator">
 
           <div className="icon">
-            🌱
+            🟣
           </div>
+
 
           <h3>
             Kreator AI
           </h3>
 
+
           <p>
-            Prowadź projekt krok po kroku.
-            AI pomoże Ci zaplanować, stworzyć
-            i rozwinąć Twój pomysł.
+            Rozpocznij projekt od podstaw.
+            AI pomoże Ci zaplanować,
+            stworzyć i prowadzić cały proces
+            krok po kroku.
           </p>
+
 
           <button>
             Rozpocznij →
@@ -42,20 +48,32 @@ export default function Features() {
 
 
 
+
+        {/* STUDIO AI */}
+
         <article className="feature-card studio">
 
           <div className="icon">
-            🛠
+            🟢
           </div>
+
 
           <h3>
             Studio AI
           </h3>
 
+
           <p>
-            Zaawansowana edycja kodu,
-            komponentów i ustawień projektu.
+            Pracuj z kodem, ucz się nowych
+            technologii i korzystaj z pomocy AI.
+            Możesz otrzymać wyjaśnienia lub
+            konkretne rozwiązania.
           </p>
+
+
+          <button>
+            Otwórz Studio →
+          </button>
 
         </article>
 
@@ -63,20 +81,31 @@ export default function Features() {
 
 
 
+        {/* PROJEKTY */}
+
         <article className="feature-card projects">
 
           <div className="icon">
-            📁
+            🔵
           </div>
+
 
           <h3>
             Projekty
           </h3>
 
+
           <p>
-            Wszystkie Twoje projekty
-            w jednym miejscu.
+            Zarządzaj swoimi projektami,
+            rozwijaj istniejące rozwiązania
+            i wracaj do pracy dokładnie
+            tam, gdzie skończyłeś.
           </p>
+
+
+          <button>
+            Moje projekty →
+          </button>
 
         </article>
 
