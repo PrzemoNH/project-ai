@@ -1,0 +1,70 @@
+/* ===========================
+   DASHBOARD
+=========================== */
+
+.dashboard {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 30px 60px;
+  text-align: center;
+  overflow: hidden;
+}
+
+
+/* TŁO IKONY */
+
+.dashboard-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+.dashboard-bg {
+  position: absolute;
+
+  width: 850px;
+  height: 850px;
+
+  left: 50%;
+  top: 180px;
+
+  transform: translateX(-50%);
+
+  opacity: 0.10;
+}
+
+
+/* NAGŁÓWEK DASHBOARD */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 20px 30px;
+}
+
+
+.dashboard-logo {
+  width: 220px;
+  height: auto;
+}
+
+
+.dashboard-account {
+  background: #1f2937;
+  color: white;
+
+  border: 1px solid #374151;
+  border-radius: 14px;
+
+  padding: 12px 18px;
+  font-size: 16px;
+}
