@@ -16,14 +16,14 @@
 
     <path 
       d="M120,182 Q74,172 60,190 Q77,206 120,198 Z"
-      fill="#F9FAFB"
-      opacity="0.95"
+      fill="#111827"
+      opacity="0.9"
     />
 
     <path 
       d="M120,182 Q166,172 180,190 Q163,206 120,198 Z"
-      fill="#F9FAFB"
-      opacity="0.85"
+      fill="#111827"
+      opacity="0.75"
     />
 
     <line 
@@ -31,7 +31,7 @@
       y1="182"
       x2="120"
       y2="198"
-      stroke="#111827"
+      stroke="#F9FAFB"
       stroke-width="2"
     />
 
@@ -65,8 +65,8 @@
       cx="120"
       cy="52"
       r="9"
-      fill="#F9FAFB"
-      stroke="#111827"
+      fill="#111827"
+      stroke="#F9FAFB"
       stroke-width="2"
     />
 
@@ -88,8 +88,9 @@
       y1="133"
       x2="106"
       y2="145"
-      stroke="#F9FAFB"
+      stroke="#111827"
       stroke-width="3"
+      stroke-linecap="round"
     />
 
     <line 
@@ -97,8 +98,9 @@
       y1="133"
       x2="120"
       y2="145"
-      stroke="#F9FAFB"
+      stroke="#111827"
       stroke-width="3"
+      stroke-linecap="round"
     />
 
     <line 
@@ -106,8 +108,9 @@
       y1="133"
       x2="134"
       y2="145"
-      stroke="#F9FAFB"
+      stroke="#111827"
       stroke-width="3"
+      stroke-linecap="round"
     />
 
 
@@ -116,7 +119,7 @@
     <path 
       d="M89,127 L78,139 L89,151"
       fill="none"
-      stroke="#D1D5DB"
+      stroke="#6B7280"
       stroke-width="4"
       stroke-linecap="round"
       stroke-linejoin="round"
@@ -126,7 +129,7 @@
     <path 
       d="M151,127 L162,139 L151,151"
       fill="none"
-      stroke="#D1D5DB"
+      stroke="#6B7280"
       stroke-width="4"
       stroke-linecap="round"
       stroke-linejoin="round"
@@ -146,7 +149,7 @@
     font-weight="700"
   >
 
-    <tspan fill="#F9FAFB">
+    <tspan fill="#111827">
       Project-
     </tspan>
 
@@ -157,7 +160,7 @@
   </text>
 
 
-  <!-- SLOGAN - KOLOROWE ETAPY -->
+  <!-- SLOGAN - NOWA KOLEJNOŚĆ -->
 
   <text 
     x="230"
@@ -166,14 +169,6 @@
     font-size="18"
     letter-spacing="2"
   >
-
-    <tspan fill="#7C3AED">
-      TWÓRZ
-    </tspan>
-
-    <tspan fill="#9CA3AF">
-      ·
-    </tspan>
 
     <tspan fill="#10B981">
       UCZ SIĘ
@@ -185,6 +180,14 @@
 
     <tspan fill="#2563EB">
       ROZWIJAJ
+    </tspan>
+
+    <tspan fill="#9CA3AF">
+      ·
+    </tspan>
+
+    <tspan fill="#7C3AED">
+      TWÓRZ
     </tspan>
 
   </text>
