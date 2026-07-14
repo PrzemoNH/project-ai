@@ -1,11 +1,19 @@
+import Image from "next/image";
+
 export default function DashboardCards() {
   return (
     <section className="dashboard-cards">
 
+
       <article className="dashboard-card create">
 
-        <div className="dashboard-icon">
-          🟣
+        <div className="card-logo">
+          <Image
+            src="/images/logo/project-ai-icon-bg.svg"
+            alt="Twórz"
+            width={90}
+            height={90}
+          />
         </div>
 
         <h2>
@@ -25,10 +33,16 @@ export default function DashboardCards() {
       </article>
 
 
+
       <article className="dashboard-card projects">
 
-        <div className="dashboard-icon">
-          🔵
+        <div className="card-logo">
+          <Image
+            src="/images/logo/project-ai-icon-bg.svg"
+            alt="Rozwijaj"
+            width={90}
+            height={90}
+          />
         </div>
 
         <h2>
@@ -48,10 +62,16 @@ export default function DashboardCards() {
       </article>
 
 
+
       <article className="dashboard-card studio">
 
-        <div className="dashboard-icon">
-          🟢
+        <div className="card-logo">
+          <Image
+            src="/images/logo/project-ai-icon-bg.svg"
+            alt="Ucz się"
+            width={90}
+            height={90}
+          />
         </div>
 
         <h2>
