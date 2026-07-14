@@ -17,12 +17,12 @@ export default function Features() {
       <div className="features-grid">
 
 
-        {/* KREATOR AI */}
+        {/* KREATOR AI - UCZ SIĘ */}
 
         <article className="feature-card creator">
 
           <div className="icon">
-            🟣
+            🟢
           </div>
 
 
@@ -32,15 +32,15 @@ export default function Features() {
 
 
           <p>
-            Rozpocznij projekt od podstaw.
-            AI pomoże Ci zaplanować,
-            stworzyć i prowadzić cały proces
-            krok po kroku.
+            Rozpocznij swoją przygodę z tworzeniem.
+            AI poprowadzi Cię krok po kroku,
+            wyjaśni proces i pomoże zbudować
+            pierwszy projekt.
           </p>
 
 
           <button>
-            Rozpocznij →
+            Rozpocznij naukę →
           </button>
 
         </article>
@@ -49,39 +49,7 @@ export default function Features() {
 
 
 
-        {/* STUDIO AI */}
-
-        <article className="feature-card studio">
-
-          <div className="icon">
-            🟢
-          </div>
-
-
-          <h3>
-            Studio AI
-          </h3>
-
-
-          <p>
-            Pracuj z kodem, ucz się nowych
-            technologii i korzystaj z pomocy AI.
-            Możesz otrzymać wyjaśnienia lub
-            konkretne rozwiązania.
-          </p>
-
-
-          <button>
-            Otwórz Studio →
-          </button>
-
-        </article>
-
-
-
-
-
-        {/* PROJEKTY */}
+        {/* PROJEKTY - ROZWIJAJ */}
 
         <article className="feature-card projects">
 
@@ -96,15 +64,47 @@ export default function Features() {
 
 
           <p>
-            Zarządzaj swoimi projektami,
-            rozwijaj istniejące rozwiązania
-            i wracaj do pracy dokładnie
-            tam, gdzie skończyłeś.
+            Masz już projekt?
+            Analizuj pliki, poprawiaj kod,
+            dodawaj funkcje i rozwijaj swoje
+            rozwiązania razem z AI.
           </p>
 
 
           <button>
             Moje projekty →
+          </button>
+
+        </article>
+
+
+
+
+
+        {/* STUDIO AI - TWÓRZ */}
+
+        <article className="feature-card studio">
+
+          <div className="icon">
+            🟣
+          </div>
+
+
+          <h3>
+            Studio AI
+          </h3>
+
+
+          <p>
+            Twórz po swojemu.
+            Pracuj nad kodem, projektuj
+            aplikacje i gry, a AI będzie
+            Twoim zaawansowanym pomocnikiem.
+          </p>
+
+
+          <button>
+            Otwórz Studio →
           </button>
 
         </article>
