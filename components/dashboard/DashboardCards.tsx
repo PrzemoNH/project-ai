@@ -11,10 +11,11 @@ export default function DashboardCards() {
           <Image
             src="/images/logo/project-ai-icon-bg.svg"
             alt=""
-            width={300}
-            height={300}
+            width={260}
+            height={260}
           />
         </div>
+
 
         <h2>
           Twórz
@@ -25,6 +26,7 @@ export default function DashboardCards() {
           Twórz strony internetowe,
           aplikacje i gry z pomocą AI.
         </p>
+
 
         <button className="card-button create-button">
           Nowy projekt →
@@ -40,10 +42,11 @@ export default function DashboardCards() {
           <Image
             src="/images/logo/project-ai-icon-bg.svg"
             alt=""
-            width={300}
-            height={300}
+            width={260}
+            height={260}
           />
         </div>
+
 
         <h2>
           Rozwijaj
@@ -54,6 +57,7 @@ export default function DashboardCards() {
           dodawaj funkcje i ulepszaj
           je razem z AI.
         </p>
+
 
         <button className="card-button projects-button">
           Moje projekty →
@@ -69,10 +73,11 @@ export default function DashboardCards() {
           <Image
             src="/images/logo/project-ai-icon-bg.svg"
             alt=""
-            width={300}
-            height={300}
+            width={260}
+            height={260}
           />
         </div>
+
 
         <h2>
           Ucz się
@@ -83,6 +88,7 @@ export default function DashboardCards() {
           programowania i korzystaj
           z pomocy AI.
         </p>
+
 
         <button className="card-button studio-button">
           AI Studio →
