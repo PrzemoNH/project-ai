@@ -318,17 +318,19 @@ button {
 =========================== */
 
 
-.dashboard {
+.dashboard{
 
-  min-height:calc(100vh - 100px);
+  position: relative;
 
-  max-width:1200px;
+  max-width: 1200px;
 
-  margin:auto;
+  margin: 0 auto;
 
-  padding:60px 30px;
+  padding: 20px 30px 60px;
 
-  text-align:center;
+  text-align: center;
+
+  overflow: hidden;
 
 }
 
