@@ -4,20 +4,23 @@
   padding: 0;
 }
 
+
 html,
 body {
   min-height: 100%;
 }
 
+
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #111827;
-  color: #f9fafb;
+  background:#111827;
+  color:#F9FAFB;
 }
 
+
 button {
-  cursor: pointer;
-  font-family: inherit;
+  cursor:pointer;
+  font-family:inherit;
 }
 
 
@@ -25,122 +28,178 @@ button {
    HEADER
 =========================== */
 
+
 .header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 12px 20px 6px;
-  position: relative;
-  z-index: 5;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  padding:12px 20px 6px;
+
 }
 
+
 .logo img {
-  width: 450px;
-  height: auto;
+
+  width:450px;
+  height:auto;
+
 }
+
 
 
 /* ===========================
    HERO
 =========================== */
 
+
 .hero {
-  position: relative;
-  min-height: 520px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 10px;
+
+  position:relative;
+
+  min-height:520px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  overflow:hidden;
+
+  padding:10px;
+
 }
+
 
 
 .hero-icon {
-  position: absolute;
-  width: 900px;
-  height: 900px;
-  opacity: 0.10;
 
-  top: 65%;
-  left: 50%;
+  position:absolute;
 
-  transform: translate(-50%, -50%);
+  width:900px;
 
-  z-index: 0;
+  height:900px;
 
-  filter: blur(1px);
+  opacity:.10;
+
+  top:65%;
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  z-index:0;
+
+  filter:blur(1px);
+
 }
+
 
 
 .hero-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
+
+  position:relative;
+
+  z-index:1;
+
+  text-align:center;
+
 }
+
 
 
 .hero h1 {
-  font-size: 80px;
-  line-height: 1.05;
-  font-weight: 800;
+
+  font-size:80px;
+
+  line-height:1.05;
+
+  font-weight:800;
+
 }
 
 
-/* ===========================
-   KOLORY PROJECT-AI
-=========================== */
 
 /* ===========================
-   KOLORY PROJECT-AI
+   PROJECT-AI COLORS
 =========================== */
+
 
 .create-text {
-  color: #7C3AED;
+
+  color:#7C3AED;
+
 }
+
 
 .learn-text {
-  color: #10B981;
+
+  color:#10B981;
+
 }
+
 
 .develop-text {
-  color: #2563EB;
+
+  color:#2563EB;
+
 }
+
+
 
 .hero p {
-  margin-top: 20px;
-  font-size: 24px;
-  color: #d1d5db;
+
+  margin-top:20px;
+
+  font-size:24px;
+
+  color:#D1D5DB;
+
 }
 
+
+
+/* ===========================
+   HERO BUTTONS
+=========================== */
 
 
 .hero-buttons {
 
   margin-top:30px;
+
   display:flex;
+
   gap:20px;
+
   justify-content:center;
 
 }
+
 
 
 .primary-button,
 .secondary-button {
 
   padding:16px 35px;
+
   border-radius:14px;
+
   border:none;
+
   font-size:18px;
 
 }
+
 
 
 .primary-button {
 
   background:linear-gradient(
     90deg,
-    #2563eb,
-    #7c3aed
+    #2563EB,
+    #7C3AED
   );
 
   color:white;
@@ -148,10 +207,13 @@ button {
 }
 
 
+
 .secondary-button {
 
-  background:#1f2937;
+  background:#1F2937;
+
   color:white;
+
   border:1px solid #374151;
 
 }
@@ -159,7 +221,7 @@ button {
 
 
 /* ===========================
-   FEATURES - STRONA GŁÓWNA
+   FEATURES
 =========================== */
 
 
@@ -176,18 +238,23 @@ button {
 }
 
 
+
 .features h2 {
 
   font-size:48px;
+
   margin-bottom:20px;
 
 }
 
 
+
 .features-subtitle {
 
-  color:#9ca3af;
+  color:#9CA3AF;
+
   font-size:20px;
+
   margin-bottom:50px;
 
 }
@@ -197,7 +264,9 @@ button {
 .features-grid {
 
   display:grid;
+
   grid-template-columns:repeat(3,1fr);
+
   gap:30px;
 
 }
@@ -207,6 +276,7 @@ button {
 .feature-card {
 
   border-radius:24px;
+
   padding:35px;
 
   border:1px solid #374151;
@@ -218,6 +288,7 @@ button {
 }
 
 
+
 .feature-card:hover {
 
   transform:translateY(-8px);
@@ -226,19 +297,25 @@ button {
 
 
 
+/* KREATOR AI - UCZ SIĘ */
+
+
 .feature-card.creator {
 
   background:
   linear-gradient(
     135deg,
-    #064e3b,
-    #065f46
+    #064E3B,
+    #065F46
   );
 
-  border-color:#10b981;
+  border-color:#10B981;
 
 }
 
+
+
+/* STUDIO AI - TWÓRZ */
 
 
 .feature-card.studio {
@@ -246,14 +323,17 @@ button {
   background:
   linear-gradient(
     135deg,
-    #1e293b,
-    #312e81
+    #1E293B,
+    #312E81
   );
 
-  border-color:#7c3aed;
+  border-color:#7C3AED;
 
 }
 
+
+
+/* PROJEKTY - ROZWIJAJ */
 
 
 .feature-card.projects {
@@ -261,11 +341,11 @@ button {
   background:
   linear-gradient(
     135deg,
-    #1e3a8a,
-    #2563eb
+    #1E3A8A,
+    #2563EB
   );
 
-  border-color:#2563eb;
+  border-color:#2563EB;
 
 }
 
@@ -274,25 +354,31 @@ button {
 .icon {
 
   font-size:45px;
+
   margin-bottom:20px;
 
 }
 
 
+
 .feature-card h3 {
 
   font-size:28px;
+
   margin-bottom:15px;
 
 }
 
 
+
 .feature-card p {
 
-  color:#e5e7eb;
+  color:#E5E7EB;
+
   line-height:1.6;
 
 }
+
 
 
 .feature-card button {
@@ -305,8 +391,6 @@ button {
 
   border-radius:12px;
 
-  background:#10b981;
-
   color:white;
 
 }
@@ -314,281 +398,27 @@ button {
 
 
 /* ===========================
-   DASHBOARD
+   FEATURE BUTTON COLORS
 =========================== */
 
 
-.dashboard{
-
-  position: relative;
-
-  max-width: 1200px;
-
-  margin: 0 auto;
-
-  padding: 20px 30px 60px;
-
-  text-align: center;
-
-  overflow: hidden;
-
-}
-
-
-.dashboard h1 {
-
-  font-size:56px;
-  margin-bottom:15px;
-
-}
-
-
-
-.dashboard-subtitle {
-
-  font-size:24px;
-
-  color:#9ca3af;
-
-  margin-bottom:60px;
-
-}
-
-
-
-/* NOWE KARTY DASHBOARD */
-
-
-.dashboard-cards {
-
-  display:grid;
-
-  grid-template-columns:repeat(3,1fr);
-
-  gap:30px;
-
-}
-
-
-
-.dashboard-card {
-
-  background:#1f2937;
-
-  border:1px solid #374151;
-
-  border-radius:30px;
-
-  padding:45px 35px;
-
-  text-align:left;
-
-  transition:.3s;
-
-}
-
-
-.dashboard-card:hover {
-
-  transform:translateY(-10px);
-
-}
-
-
-
-.dashboard-icon {
-
-  font-size:50px;
-
-}
-
-
-
-.dashboard-card h2 {
-
-  font-size:32px;
-
-  margin:20px 0 15px;
-
-}
-
-
-
-.dashboard-card p {
-
-  color:#d1d5db;
-
-  line-height:1.7;
-
-}
-
-
-
-.dashboard-card button {
-
-  margin-top:25px;
-
-  padding:12px 28px;
-
-  border:none;
-
-  border-radius:12px;
-
-  color:white;
-
-  font-size:16px;
-
-  font-weight:600;
-
-  transition:.3s;
-
-}
-
-
-/* ===========================
-   DASHBOARD CARD BUTTONS
-=========================== */
-
-
-.create-button {
-
-  background:#7C3AED;
-
-}
-
-
-.create-button:hover {
-
-  background:#6D28D9;
-
-  transform:translateY(-2px);
-
-}
-
-
-
-.projects-button {
-
-  background:#2563EB;
-
-}
-
-
-.projects-button:hover {
-
-  background:#1D4ED8;
-
-  transform:translateY(-2px);
-
-}
-
-
-
-.studio-button {
+.feature-card.creator button {
 
   background:#10B981;
 
 }
 
 
-.studio-button:hover {
-
-  background:#059669;
-
-  transform:translateY(-2px);
-
-}
-
-
-
-.dashboard-card.create {
-
-  border-color:#7C3AED;
-
-}
-
-
-
-.dashboard-card.create button {
-
-  background:#7C3AED;
-
-}
-
-
-
-.dashboard-card.projects {
-
-  border-color:#2563EB;
-
-}
-
-
-
-.dashboard-card.projects button {
+.feature-card.projects button {
 
   background:#2563EB;
 
 }
 
 
+.feature-card.studio button {
 
-.dashboard-card.studio {
-
-  border-color:#10B981;
-
-}
-
-
-
-.dashboard-card.studio button {
-
-  background:#10B981;
-
-}
-
-
-
-/* OSTATNIE PROJEKTY */
-
-
-.projects-box {
-
-  margin-top:70px;
-
-  padding:35px;
-
-  background:#1f2937;
-
-  border-radius:24px;
-
-  border:1px solid #374151;
-
-}
-
-
-
-.projects-box h2 {
-
-  font-size:32px;
-
-}
-
-
-
-.projects-box button {
-
-  margin-top:20px;
-
-  padding:12px 25px;
-
-  border:none;
-
-  border-radius:12px;
-
-  background:#2563eb;
-
-  color:white;
+  background:#7C3AED;
 
 }
 
@@ -610,8 +440,7 @@ button {
 
 
 
-.features-grid,
-.dashboard-cards {
+.features-grid {
 
   grid-template-columns:1fr;
 
@@ -625,172 +454,5 @@ button {
 
 }
 
-
-
-.dashboard h1 {
-
-  font-size:42px;
-
-}
-
-
-
-}
-
-/* ===========================
-   DASHBOARD HEADER
-=========================== */
-
-.dashboard-header {
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 20px 35px;
-
-  background: #1f2937;
-
-  border-bottom: 1px solid #374151;
-
-}
-
-.dashboard-logo {
-
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  font-size: 28px;
-  font-weight: 700;
-
-}
-
-.dashboard-logo span {
-
-  color: #f9fafb;
-
-}
-
-.dashboard-actions {
-
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-}
-
-.header-button,
-.header-profile {
-
-  border: none;
-
-  background: #111827;
-
-  color: #f9fafb;
-
-  border: 1px solid #374151;
-
-  border-radius: 14px;
-
-  padding: 12px 18px;
-
-  font-size: 16px;
-
-  transition: .25s;
-
-}
-
-.header-button:hover,
-.header-profile:hover {
-
-  background: #2563EB;
-
-  border-color: #2563EB;
-
-}
-/* ===========================
-   DASHBOARD HEADER
-=========================== */
-
-.dashboard-header {
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  max-width:1200px;
-
-  margin:0 auto;
-
-  padding:20px 30px;
-
-}
-
-
-.dashboard-logo{
-
-  width:220px;
-  height:auto;
-
-}
-
-
-.dashboard-account{
-
-  background:#1f2937;
-
-  color:white;
-
-  border:1px solid #374151;
-
-  border-radius:14px;
-
-  padding:12px 18px;
-
-  font-size:16px;
-
-}
-
-
-/* ===========================
-   DASHBOARD BACKGROUND
-=========================== */
-
-.dashboard{
-
-  position:relative;
-
-  overflow:hidden;
-
-}
-
-
-.dashboard-bg{
-
-  position:absolute;
-
-  right:-180px;
-
-  top:40px;
-
-  width:850px;
-
-  height:auto;
-
-  opacity:.05;
-
-  pointer-events:none;
-
-  z-index:0;
-
-}
-
-
-.dashboard>*{
-
-  position:relative;
-
-  z-index:1;
 
 }
