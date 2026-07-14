@@ -38,6 +38,13 @@
 }
 
 
+.dashboard-background img {
+
+  display:block;
+
+}
+
+
 .dashboard-bg {
 
   position: absolute;
@@ -62,7 +69,9 @@
 
 /* Wszystko nad tłem */
 
-.dashboard > * {
+.dashboard > h1,
+.dashboard > p,
+.dashboard > section {
 
   position: relative;
 
