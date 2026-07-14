@@ -16,21 +16,21 @@ export default function Hero() {
       <div className="hero-content">
 
 <h1>
-  <span className="create-text">
-    Twórz.
-  </span>
-
-  <br />
-
   <span className="learn-text">
-    Ucz się.
-  </span>
+  Ucz się.
+</span>
 
-  <br />
+<br />
 
-  <span className="develop-text">
-    Rozwijaj.
-  </span>
+<span className="develop-text">
+  Rozwijaj.
+</span>
+
+<br />
+
+<span className="create-text">
+  Twórz.
+</span>
 </h1>
 
         <p>
