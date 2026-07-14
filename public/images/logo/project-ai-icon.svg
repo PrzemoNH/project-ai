@@ -1,35 +1,138 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
-  <defs>
-    <linearGradient id="legGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2563EB"/>
-      <stop offset="100%" stop-color="#7C3AED"/>
-    </linearGradient>
-  </defs>
 
   <!-- Tło -->
-  <rect x="0" y="0" width="240" height="240" rx="46" fill="#111827"/>
+  <rect 
+    x="0" 
+    y="0" 
+    width="240" 
+    height="240" 
+    rx="46" 
+    fill="#111827"
+  />
 
-  <!-- Otwarta książka (podstawa) -->
-  <g>
-    <path d="M120,182 Q74,172 60,190 Q77,206 120,198 Z" fill="#F9FAFB" opacity="0.95"/>
-    <path d="M120,182 Q166,172 180,190 Q163,206 120,198 Z" fill="#F9FAFB" opacity="0.85"/>
-    <line x1="120" y1="182" x2="120" y2="198" stroke="#111827" stroke-width="2"/>
-  </g>
 
-  <!-- Cyrkiel: dwie nogi tworzące literę "A" -->
-  <line x1="120" y1="52" x2="79" y2="178" stroke="#2563EB" stroke-width="16" stroke-linecap="round"/>
-  <line x1="120" y1="52" x2="161" y2="178" stroke="#7C3AED" stroke-width="16" stroke-linecap="round"/>
+  <!-- Otwarta książka -->
 
-  <!-- Zawias cyrkla -->
-  <circle cx="120" cy="52" r="9" fill="#F9FAFB" stroke="#111827" stroke-width="2"/>
+  <path 
+    d="M120,182 Q74,172 60,190 Q77,206 120,198 Z"
+    fill="#F9FAFB"
+    opacity="0.95"
+  />
 
-  <!-- Linijka: poprzeczka litery "A" z podziałką -->
-  <line x1="94" y1="139" x2="146" y2="139" stroke="#10B981" stroke-width="10" stroke-linecap="round"/>
-  <line x1="106" y1="133" x2="106" y2="145" stroke="#F9FAFB" stroke-width="3" stroke-linecap="round"/>
-  <line x1="120" y1="133" x2="120" y2="145" stroke="#F9FAFB" stroke-width="3" stroke-linecap="round"/>
-  <line x1="134" y1="133" x2="134" y2="145" stroke="#F9FAFB" stroke-width="3" stroke-linecap="round"/>
+  <path 
+    d="M120,182 Q166,172 180,190 Q163,206 120,198 Z"
+    fill="#F9FAFB"
+    opacity="0.85"
+  />
 
-  <!-- Ukryty symbol kodu </> jako subtelne "nawiasy" przy poprzeczce -->
-  <path d="M89,127 L78,139 L89,151" fill="none" stroke="#D1D5DB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
-  <path d="M151,127 L162,139 L151,151" fill="none" stroke="#D1D5DB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+  <line 
+    x1="120"
+    y1="182"
+    x2="120"
+    y2="198"
+    stroke="#111827"
+    stroke-width="2"
+  />
+
+
+  <!-- Cyrkiel A -->
+
+  <line 
+    x1="120"
+    y1="52"
+    x2="79"
+    y2="178"
+    stroke="#2563EB"
+    stroke-width="16"
+    stroke-linecap="round"
+  />
+
+  <line 
+    x1="120"
+    y1="52"
+    x2="161"
+    y2="178"
+    stroke="#7C3AED"
+    stroke-width="16"
+    stroke-linecap="round"
+  />
+
+
+  <!-- Zawias -->
+
+  <circle 
+    cx="120"
+    cy="52"
+    r="9"
+    fill="#F9FAFB"
+    stroke="#111827"
+    stroke-width="2"
+  />
+
+
+  <!-- Linijka -->
+
+  <line 
+    x1="94"
+    y1="139"
+    x2="146"
+    y2="139"
+    stroke="#10B981"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+
+  <line 
+    x1="106"
+    y1="133"
+    x2="106"
+    y2="145"
+    stroke="#F9FAFB"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+
+  <line 
+    x1="120"
+    y1="133"
+    x2="120"
+    y2="145"
+    stroke="#F9FAFB"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+
+  <line 
+    x1="134"
+    y1="133"
+    x2="134"
+    y2="145"
+    stroke="#F9FAFB"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+
+
+  <!-- Kod </> -->
+
+  <path 
+    d="M89,127 L78,139 L89,151"
+    fill="none"
+    stroke="#D1D5DB"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.7"
+  />
+
+  <path 
+    d="M151,127 L162,139 L151,151"
+    fill="none"
+    stroke="#D1D5DB"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.7"
+  />
+
 </svg>
