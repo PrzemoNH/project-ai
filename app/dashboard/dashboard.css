@@ -2,87 +2,24 @@
    DASHBOARD
 =========================== */
 
+
 .dashboard {
 
   position: relative;
 
-  max-width: 1200px;
+  max-width:1200px;
 
-  margin: 0 auto;
+  margin:0 auto;
 
-  padding: 20px 30px 60px;
+  padding:20px 30px 60px;
 
-  text-align: center;
-
-  overflow: hidden;
+  text-align:center;
 
 }
 
 
 /* ===========================
-   TŁO DASHBOARD
-=========================== */
-
-.dashboard-background {
-
-  position: absolute;
-
-  inset: 0;
-
-  overflow: hidden;
-
-  pointer-events: none;
-
-  z-index: 0;
-
-}
-
-
-.dashboard-background img {
-
-  display:block;
-
-}
-
-
-.dashboard-bg {
-
-  position: absolute;
-
-  width: 850px;
-
-  height: 850px;
-
-  left: 50%;
-
-  top: 120px;
-
-  transform: translateX(-50%);
-
-  opacity: 0.12;
-
-  filter: blur(1px);
-
-}
-
-
-
-/* Wszystko nad tłem */
-
-.dashboard > h1,
-.dashboard > p,
-.dashboard > section {
-
-  position: relative;
-
-  z-index: 1;
-
-}
-
-
-
-/* ===========================
-   DASHBOARD HEADER
+   HEADER
 =========================== */
 
 
@@ -112,12 +49,11 @@
 }
 
 
-
 .dashboard-account {
 
   background:#1f2937;
 
-  color:white;
+  color:#F9FAFB;
 
   border:1px solid #374151;
 
@@ -145,12 +81,11 @@
 }
 
 
-
 .dashboard-subtitle {
 
   font-size:24px;
 
-  color:#9ca3af;
+  color:#9CA3AF;
 
   margin-bottom:60px;
 
@@ -177,7 +112,11 @@
 
 .dashboard-card {
 
-  background:rgba(31,41,55,0.55);
+  position:relative;
+
+  overflow:hidden;
+
+  background:rgba(31,41,55,0.65);
 
   backdrop-filter:blur(8px);
 
@@ -194,7 +133,6 @@
 }
 
 
-
 .dashboard-card:hover {
 
   transform:translateY(-10px);
@@ -203,12 +141,61 @@
 
 
 
-.dashboard-icon {
+/* ===========================
+   IKONA W TLE KARTY
+=========================== */
 
-  font-size:50px;
+
+.card-background-icon {
+
+  position:absolute;
+
+  inset:0;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  pointer-events:none;
+
+  z-index:0;
 
 }
 
+
+
+.card-background-icon img {
+
+  width:280px;
+
+  height:280px;
+
+  opacity:0.14;
+
+}
+
+
+
+/* treść nad ikoną */
+
+
+.dashboard-card h2,
+.dashboard-card p,
+.dashboard-card button {
+
+  position:relative;
+
+  z-index:1;
+
+}
+
+
+
+/* ===========================
+   TYTUŁY KART
+=========================== */
 
 
 .dashboard-card h2 {
@@ -217,18 +204,48 @@
 
   margin:20px 0 15px;
 
+  text-align:center;
+
 }
+
+
+
+.dashboard-card.create h2 {
+
+  color:#7C3AED;
+
+}
+
+
+.dashboard-card.projects h2 {
+
+  color:#2563EB;
+
+}
+
+
+.dashboard-card.studio h2 {
+
+  color:#10B981;
+
+}
+
 
 
 
 .dashboard-card p {
 
-  color:#d1d5db;
+  color:#D1D5DB;
 
   line-height:1.7;
 
 }
 
+
+
+/* ===========================
+   PRZYCISKI
+=========================== */
 
 
 .dashboard-card button {
@@ -251,55 +268,21 @@
 
 
 
-/* ===========================
-   KOLORY KART
-=========================== */
-
-
-/* 🟣 TWÓRZ */
-
-.dashboard-card.create {
-
-  border-color:#7C3AED;
-
-}
-
-
-.dashboard-card.create button {
+.create-button {
 
   background:#7C3AED;
 
 }
 
 
-
-/* 🔵 ROZWIJAJ */
-
-.dashboard-card.projects {
-
-  border-color:#2563EB;
-
-}
-
-
-.dashboard-card.projects button {
+.projects-button {
 
   background:#2563EB;
 
 }
 
 
-
-/* 🟢 UCZ SIĘ */
-
-.dashboard-card.studio {
-
-  border-color:#10B981;
-
-}
-
-
-.dashboard-card.studio button {
+.studio-button {
 
   background:#10B981;
 
@@ -318,7 +301,7 @@
 
   padding:35px;
 
-  background:rgba(31,41,55,0.55);
+  background:rgba(31,41,55,0.65);
 
   backdrop-filter:blur(8px);
 
@@ -327,6 +310,7 @@
   border:1px solid #374151;
 
 }
+
 
 
 .projects-box h2 {
@@ -359,11 +343,11 @@
 }
 
 
-.dashboard-bg {
+.card-background-icon img {
 
-  width:600px;
+  width:220px;
 
-  height:600px;
+  height:220px;
 
 }
 
