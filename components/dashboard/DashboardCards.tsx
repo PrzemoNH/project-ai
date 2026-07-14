@@ -7,12 +7,12 @@ export default function DashboardCards() {
 
       <article className="dashboard-card create">
 
-        <div className="card-logo">
+        <div className="card-background-icon">
           <Image
             src="/images/logo/project-ai-icon-bg.svg"
-            alt="Twórz"
-            width={90}
-            height={90}
+            alt=""
+            width={300}
+            height={300}
           />
         </div>
 
@@ -36,12 +36,12 @@ export default function DashboardCards() {
 
       <article className="dashboard-card projects">
 
-        <div className="card-logo">
+        <div className="card-background-icon">
           <Image
             src="/images/logo/project-ai-icon-bg.svg"
-            alt="Rozwijaj"
-            width={90}
-            height={90}
+            alt=""
+            width={300}
+            height={300}
           />
         </div>
 
@@ -65,12 +65,12 @@ export default function DashboardCards() {
 
       <article className="dashboard-card studio">
 
-        <div className="card-logo">
+        <div className="card-background-icon">
           <Image
             src="/images/logo/project-ai-icon-bg.svg"
-            alt="Ucz się"
-            width={90}
-            height={90}
+            alt=""
+            width={300}
+            height={300}
           />
         </div>
 
