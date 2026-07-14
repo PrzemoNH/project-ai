@@ -5,7 +5,7 @@
 
 .dashboard {
 
-  position: relative;
+  position:relative;
 
   max-width:1200px;
 
@@ -16,6 +16,7 @@
   text-align:center;
 
 }
+
 
 
 /* ===========================
@@ -87,7 +88,7 @@
 
   color:#9CA3AF;
 
-  margin-bottom:60px;
+  margin-bottom:50px;
 
 }
 
@@ -104,7 +105,7 @@
 
   grid-template-columns:repeat(3,1fr);
 
-  gap:30px;
+  gap:25px;
 
 }
 
@@ -118,13 +119,13 @@
 
   background:rgba(31,41,55,0.65);
 
-  backdrop-filter:blur(8px);
-
   border:1px solid #374151;
 
-  border-radius:30px;
+  border-radius:24px;
 
-  padding:45px 35px;
+  padding:30px;
+
+  min-height:300px;
 
   text-align:left;
 
@@ -135,14 +136,14 @@
 
 .dashboard-card:hover {
 
-  transform:translateY(-10px);
+  transform:translateY(-6px);
 
 }
 
 
 
 /* ===========================
-   IKONA W TLE KARTY
+   IKONA JAKO TŁO
 =========================== */
 
 
@@ -150,17 +151,15 @@
 
   position:absolute;
 
-  inset:0;
+  top:50%;
 
-  display:flex;
+  left:50%;
 
-  justify-content:center;
-
-  align-items:center;
-
-  pointer-events:none;
+  transform:translate(-50%,-50%);
 
   z-index:0;
+
+  pointer-events:none;
 
 }
 
@@ -168,17 +167,19 @@
 
 .card-background-icon img {
 
-  width:280px;
+  width:260px;
 
-  height:280px;
+  height:260px;
 
-  opacity:0.14;
+  opacity:0.10;
 
 }
 
 
 
-/* treść nad ikoną */
+/* ===========================
+   TREŚĆ NAD IKONĄ
+=========================== */
 
 
 .dashboard-card h2,
@@ -194,15 +195,15 @@
 
 
 /* ===========================
-   TYTUŁY KART
+   NAZWY MODUŁÓW
 =========================== */
 
 
 .dashboard-card h2 {
 
-  font-size:32px;
+  font-size:30px;
 
-  margin:20px 0 15px;
+  margin-bottom:25px;
 
   text-align:center;
 
@@ -232,12 +233,11 @@
 
 
 
-
 .dashboard-card p {
 
   color:#D1D5DB;
 
-  line-height:1.7;
+  line-height:1.6;
 
 }
 
@@ -250,9 +250,9 @@
 
 .dashboard-card button {
 
-  margin-top:25px;
+  margin-top:20px;
 
-  padding:12px 28px;
+  padding:12px 25px;
 
   border:none;
 
@@ -297,25 +297,15 @@
 
 .projects-box {
 
-  margin-top:70px;
+  margin-top:60px;
 
-  padding:35px;
+  padding:30px;
 
   background:rgba(31,41,55,0.65);
-
-  backdrop-filter:blur(8px);
 
   border-radius:24px;
 
   border:1px solid #374151;
-
-}
-
-
-
-.projects-box h2 {
-
-  font-size:32px;
 
 }
 
@@ -339,15 +329,6 @@
 .dashboard h1 {
 
   font-size:42px;
-
-}
-
-
-.card-background-icon img {
-
-  width:220px;
-
-  height:220px;
 
 }
 
