@@ -3,68 +3,360 @@
 =========================== */
 
 .dashboard {
+
   position: relative;
+
   max-width: 1200px;
+
   margin: 0 auto;
+
   padding: 20px 30px 60px;
+
   text-align: center;
+
   overflow: hidden;
+
 }
 
 
-/* TŁO IKONY */
+/* ===========================
+   TŁO DASHBOARD
+=========================== */
 
 .dashboard-background {
+
   position: absolute;
+
   inset: 0;
+
   overflow: hidden;
+
   pointer-events: none;
+
   z-index: 0;
+
 }
 
 
 .dashboard-bg {
+
   position: absolute;
 
   width: 850px;
+
   height: 850px;
 
   left: 50%;
-  top: 180px;
+
+  top: 120px;
 
   transform: translateX(-50%);
 
-  opacity: 0.10;
+  opacity: 0.12;
+
+  filter: blur(1px);
+
 }
 
 
-/* NAGŁÓWEK DASHBOARD */
+
+/* Wszystko nad tłem */
+
+.dashboard > * {
+
+  position: relative;
+
+  z-index: 1;
+
+}
+
+
+
+/* ===========================
+   DASHBOARD HEADER
+=========================== */
+
 
 .dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
-  max-width: 1200px;
-  margin: 0 auto;
+  display:flex;
 
-  padding: 20px 30px;
+  justify-content:space-between;
+
+  align-items:center;
+
+  max-width:1200px;
+
+  margin:0 auto;
+
+  padding:20px 30px;
+
 }
 
 
 .dashboard-logo {
-  width: 220px;
-  height: auto;
+
+  width:220px;
+
+  height:auto;
+
 }
 
 
+
 .dashboard-account {
-  background: #1f2937;
-  color: white;
 
-  border: 1px solid #374151;
-  border-radius: 14px;
+  background:#1f2937;
 
-  padding: 12px 18px;
-  font-size: 16px;
+  color:white;
+
+  border:1px solid #374151;
+
+  border-radius:14px;
+
+  padding:12px 18px;
+
+  font-size:16px;
+
+}
+
+
+
+/* ===========================
+   TYTUŁ
+=========================== */
+
+
+.dashboard h1 {
+
+  font-size:56px;
+
+  margin-bottom:15px;
+
+}
+
+
+
+.dashboard-subtitle {
+
+  font-size:24px;
+
+  color:#9ca3af;
+
+  margin-bottom:60px;
+
+}
+
+
+
+/* ===========================
+   KARTY
+=========================== */
+
+
+.dashboard-cards {
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:30px;
+
+}
+
+
+
+.dashboard-card {
+
+  background:rgba(31,41,55,0.55);
+
+  backdrop-filter:blur(8px);
+
+  border:1px solid #374151;
+
+  border-radius:30px;
+
+  padding:45px 35px;
+
+  text-align:left;
+
+  transition:.3s;
+
+}
+
+
+
+.dashboard-card:hover {
+
+  transform:translateY(-10px);
+
+}
+
+
+
+.dashboard-icon {
+
+  font-size:50px;
+
+}
+
+
+
+.dashboard-card h2 {
+
+  font-size:32px;
+
+  margin:20px 0 15px;
+
+}
+
+
+
+.dashboard-card p {
+
+  color:#d1d5db;
+
+  line-height:1.7;
+
+}
+
+
+
+.dashboard-card button {
+
+  margin-top:25px;
+
+  padding:12px 28px;
+
+  border:none;
+
+  border-radius:12px;
+
+  color:white;
+
+  font-size:16px;
+
+  font-weight:600;
+
+}
+
+
+
+/* ===========================
+   KOLORY KART
+=========================== */
+
+
+/* 🟣 TWÓRZ */
+
+.dashboard-card.create {
+
+  border-color:#7C3AED;
+
+}
+
+
+.dashboard-card.create button {
+
+  background:#7C3AED;
+
+}
+
+
+
+/* 🔵 ROZWIJAJ */
+
+.dashboard-card.projects {
+
+  border-color:#2563EB;
+
+}
+
+
+.dashboard-card.projects button {
+
+  background:#2563EB;
+
+}
+
+
+
+/* 🟢 UCZ SIĘ */
+
+.dashboard-card.studio {
+
+  border-color:#10B981;
+
+}
+
+
+.dashboard-card.studio button {
+
+  background:#10B981;
+
+}
+
+
+
+/* ===========================
+   OSTATNIE PROJEKTY
+=========================== */
+
+
+.projects-box {
+
+  margin-top:70px;
+
+  padding:35px;
+
+  background:rgba(31,41,55,0.55);
+
+  backdrop-filter:blur(8px);
+
+  border-radius:24px;
+
+  border:1px solid #374151;
+
+}
+
+
+.projects-box h2 {
+
+  font-size:32px;
+
+}
+
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+
+@media(max-width:768px){
+
+
+.dashboard-cards {
+
+  grid-template-columns:1fr;
+
+}
+
+
+.dashboard h1 {
+
+  font-size:42px;
+
+}
+
+
+.dashboard-bg {
+
+  width:600px;
+
+  height:600px;
+
+}
+
+
 }
