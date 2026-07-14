@@ -143,7 +143,7 @@
 
 
 /* ===========================
-   IKONA JAKO TŁO
+   IKONA W TLE KAFELKA
 =========================== */
 
 
@@ -151,27 +151,19 @@
 
   position:absolute;
 
-  top:50%;
-
-  left:50%;
-
-  transform:translate(-50%,-50%);
-
-  z-index:0;
-
-  pointer-events:none;
-
-}
-
-
-
-.card-background-icon img {
-
   width:260px;
 
   height:260px;
 
-  opacity:0.10;
+  right:-45px;
+
+  bottom:-45px;
+
+  opacity:0.13;
+
+  z-index:0;
+
+  pointer-events:none;
 
 }
 
@@ -329,6 +321,15 @@
 .dashboard h1 {
 
   font-size:42px;
+
+}
+
+
+.card-background-icon {
+
+  width:220px;
+
+  height:220px;
 
 }
 
