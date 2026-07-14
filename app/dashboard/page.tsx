@@ -1,3 +1,5 @@
+import "./dashboard.css";
+
 import DashboardHeader from "@/components/dashboard/dashboard-header";
 import DashboardCards from "@/components/dashboard/DashboardCards";
 import RecentProjects from "@/components/dashboard/RecentProjects";
