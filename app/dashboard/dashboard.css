@@ -1,397 +1,42 @@
 /* ===========================
-   DASHBOARD
+   DASHBOARD COLORS FIX
 =========================== */
 
-.dashboard {
-
-  position:relative;
-
-  max-width:1200px;
-
-  margin:0 auto;
-
-  padding:20px 30px 60px;
-
-  text-align:center;
-
+.dashboard-card.learn {
+  background:linear-gradient(135deg,rgba(6,78,59,.75),rgba(16,185,129,.25));
+  border:1px solid #10B981;
 }
 
-
-
-/* ===========================
-   HEADER
-=========================== */
-
-
-.dashboard-header {
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  max-width:1200px;
-
-  margin:0 auto;
-
-  padding:20px 30px;
-
+.dashboard-card.learn h2 {
+  color:#10B981;
 }
 
-
-
-.dashboard-logo {
-
-  width:220px;
-
-  height:auto;
-
+.learn-button {
+  background:#10B981;
 }
-
-
-
-.dashboard-account {
-
-  background:#1f2937;
-
-  color:#F9FAFB;
-
-  border:1px solid #374151;
-
-  border-radius:14px;
-
-  padding:12px 18px;
-
-}
-
-
-
-/* ===========================
-   TYTUŁ
-=========================== */
-
-
-.dashboard h1 {
-
-  font-size:56px;
-
-  margin-bottom:15px;
-
-}
-
-
-
-.dashboard-subtitle {
-
-  font-size:24px;
-
-  color:#9CA3AF;
-
-  margin-bottom:50px;
-
-}
-
-
-
-/* ===========================
-   KARTY
-=========================== */
-
-
-.dashboard-cards {
-
-  display:grid;
-
-  grid-template-columns:repeat(3,1fr);
-
-  gap:25px;
-
-}
-
-
-
-.dashboard-card {
-
-  position:relative;
-
-  overflow:hidden;
-
-  border-radius:24px;
-
-  padding:30px;
-
-  min-height:270px;
-
-  text-align:left;
-
-  transition:.3s;
-
-}
-
-
-
-.dashboard-card:hover {
-
-  transform:translateY(-8px);
-
-}
-
-
-
-/* ===========================
-   IKONA W TLE
-=========================== */
-
-
-.card-background-icon {
-
-  position:absolute;
-
-  right:-35px;
-
-  bottom:-35px;
-
-  width:260px;
-
-  height:260px;
-
-  opacity:.12;
-
-  pointer-events:none;
-
-  z-index:0;
-
-}
-
-
-
-/* ===========================
-   TREŚĆ
-=========================== */
-
-
-.dashboard-card h2,
-.dashboard-card p,
-.dashboard-card button {
-
-  position:relative;
-
-  z-index:1;
-
-}
-
-
-
-.dashboard-card h2 {
-
-  font-size:32px;
-
-  text-align:center;
-
-  margin-bottom:25px;
-
-}
-
-
-
-.dashboard-card p {
-
-  color:#E5E7EB;
-
-  line-height:1.6;
-
-}
-
-
-
-/* ===========================
-   KOLORY MODUŁÓW
-=========================== */
-
-
-/* 🟢 UCZ SIĘ */
 
 .dashboard-card.create {
-
-  background:
-  linear-gradient(
-    135deg,
-    rgba(6,78,59,.75),
-    rgba(16,185,129,.25)
-  );
-
-  border:1px solid #10B981;
-
+  background:linear-gradient(135deg,rgba(49,46,129,.75),rgba(124,58,237,.25));
+  border:1px solid #7C3AED;
 }
-
-
 
 .dashboard-card.create h2 {
-
-  color:#10B981;
-
+  color:#7C3AED;
 }
-
-
 
 .create-button {
-
-  background:#10B981;
-
+  background:#7C3AED;
 }
-
-
-
-
-
-/* 🔵 ROZWIJAJ */
-
 
 .dashboard-card.projects {
-
-  background:
-  linear-gradient(
-    135deg,
-    rgba(30,58,138,.75),
-    rgba(37,99,235,.25)
-  );
-
+  background:linear-gradient(135deg,rgba(30,58,138,.75),rgba(37,99,235,.25));
   border:1px solid #2563EB;
-
 }
-
-
 
 .dashboard-card.projects h2 {
-
   color:#2563EB;
-
 }
-
-
 
 .projects-button {
-
   background:#2563EB;
-
-}
-
-
-
-
-
-/* 🟣 TWÓRZ */
-
-
-.dashboard-card.studio {
-
-  background:
-  linear-gradient(
-    135deg,
-    rgba(49,46,129,.75),
-    rgba(124,58,237,.25)
-  );
-
-  border:1px solid #7C3AED;
-
-}
-
-
-
-.dashboard-card.studio h2 {
-
-  color:#7C3AED;
-
-}
-
-
-
-.studio-button {
-
-  background:#7C3AED;
-
-}
-
-
-
-/* ===========================
-   PRZYCISKI
-=========================== */
-
-
-.dashboard-card button {
-
-  margin-top:20px;
-
-  padding:12px 25px;
-
-  border:none;
-
-  border-radius:12px;
-
-  color:white;
-
-  font-size:16px;
-
-  font-weight:600;
-
-}
-
-
-
-/* ===========================
-   OSTATNIE PROJEKTY
-=========================== */
-
-
-.projects-box {
-
-  margin-top:60px;
-
-  padding:30px;
-
-  background:rgba(31,41,55,.65);
-
-  border-radius:24px;
-
-  border:1px solid #374151;
-
-}
-
-
-
-/* ===========================
-   MOBILE
-=========================== */
-
-
-@media(max-width:768px){
-
-
-.dashboard-cards {
-
-  grid-template-columns:1fr;
-
-}
-
-
-
-.dashboard h1 {
-
-  font-size:42px;
-
-}
-
-
-
-.card-background-icon {
-
-  width:220px;
-
-  height:220px;
-
-}
-
-
 }
