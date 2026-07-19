@@ -4,12 +4,10 @@
   padding: 0;
 }
 
-
 html,
 body {
   min-height: 100%;
 }
-
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -17,442 +15,211 @@ body {
   color:#F9FAFB;
 }
 
-
 button {
   cursor:pointer;
   font-family:inherit;
 }
 
+.landing-shell {
+  min-height:320px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px 20px;
+}
+
+.landing-card {
+  width:100%;
+  max-width:900px;
+  text-align:center;
+  padding:50px 35px;
+  border-radius:32px;
+  background:linear-gradient(135deg,#1F2937,#111827);
+  border:1px solid #374151;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.landing-card h1 {
+  font-size:48px;
+  line-height:1.15;
+  font-weight:800;
+}
+
+.landing-card p {
+  margin:22px auto 30px;
+  max-width:650px;
+  color:#D1D5DB;
+  font-size:20px;
+  line-height:1.6;
+}
 
 /* ===========================
    HEADER
 =========================== */
 
-
 .header {
-
   display:flex;
   flex-direction:column;
   align-items:center;
-
   padding:12px 20px 6px;
-
 }
-
 
 .logo img {
-
   width:450px;
   height:auto;
-
 }
-
-
-
-/* ===========================
-   HERO
-=========================== */
-
 
 .hero {
-
   position:relative;
-
   min-height:520px;
-
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
   overflow:hidden;
-
   padding:10px;
-
 }
-
-
 
 .hero-icon {
-
   position:absolute;
-
   width:900px;
-
   height:900px;
-
   opacity:.10;
-
   top:65%;
   left:50%;
-
   transform:translate(-50%,-50%);
-
   z-index:0;
-
   filter:blur(1px);
-
 }
-
-
 
 .hero-content {
-
   position:relative;
-
   z-index:1;
-
   text-align:center;
-
 }
-
-
 
 .hero h1 {
-
   font-size:80px;
-
   line-height:1.05;
-
   font-weight:800;
-
 }
 
-
-
-/* ===========================
-   PROJECT-AI COLORS
-=========================== */
-
-
-.create-text {
-
-  color:#7C3AED;
-
-}
-
-
-.learn-text {
-
-  color:#10B981;
-
-}
-
-
-.develop-text {
-
-  color:#2563EB;
-
-}
-
-
+.create-text { color:#7C3AED; }
+.learn-text { color:#10B981; }
+.develop-text { color:#2563EB; }
 
 .hero p {
-
   margin-top:20px;
-
   font-size:24px;
-
   color:#D1D5DB;
-
 }
-
-
-
-/* ===========================
-   HERO BUTTONS
-=========================== */
-
 
 .hero-buttons {
-
   margin-top:30px;
-
   display:flex;
-
   gap:20px;
-
   justify-content:center;
-
 }
-
-
 
 .primary-button,
 .secondary-button {
-
   padding:16px 35px;
-
   border-radius:14px;
-
   border:none;
-
   font-size:18px;
-
 }
-
-
 
 .primary-button {
-
-  background:linear-gradient(
-    90deg,
-    #2563EB,
-    #7C3AED
-  );
-
+  background:linear-gradient(90deg,#2563EB,#7C3AED);
   color:white;
-
+  text-decoration:none;
 }
-
-
 
 .secondary-button {
-
   background:#1F2937;
-
   color:white;
-
   border:1px solid #374151;
-
 }
-
-
-
-/* ===========================
-   FEATURES
-=========================== */
-
 
 .features {
-
   max-width:1200px;
-
   margin:15px auto 60px;
-
   padding:20px;
-
   text-align:center;
-
 }
-
-
 
 .features h2 {
-
   font-size:48px;
-
   margin-bottom:20px;
-
 }
-
-
 
 .features-subtitle {
-
   color:#9CA3AF;
-
   font-size:20px;
-
   margin-bottom:50px;
-
 }
-
-
 
 .features-grid {
-
   display:grid;
-
   grid-template-columns:repeat(3,1fr);
-
   gap:30px;
-
 }
-
-
 
 .feature-card {
-
   border-radius:24px;
-
   padding:35px;
-
   border:1px solid #374151;
-
   text-align:left;
-
   transition:.3s;
-
 }
 
-
-
-.feature-card:hover {
-
-  transform:translateY(-8px);
-
-}
-
-
-
-/* KREATOR AI - UCZ SIĘ */
-
+.feature-card:hover { transform:translateY(-8px); }
 
 .feature-card.creator {
-
-  background:
-  linear-gradient(
-    135deg,
-    #064E3B,
-    #065F46
-  );
-
+  background:linear-gradient(135deg,#064E3B,#065F46);
   border-color:#10B981;
-
 }
-
-
-
-/* STUDIO AI - TWÓRZ */
-
 
 .feature-card.studio {
-
-  background:
-  linear-gradient(
-    135deg,
-    #1E293B,
-    #312E81
-  );
-
+  background:linear-gradient(135deg,#1E293B,#312E81);
   border-color:#7C3AED;
-
 }
-
-
-
-/* PROJEKTY - ROZWIJAJ */
-
 
 .feature-card.projects {
-
-  background:
-  linear-gradient(
-    135deg,
-    #1E3A8A,
-    #2563EB
-  );
-
+  background:linear-gradient(135deg,#1E3A8A,#2563EB);
   border-color:#2563EB;
-
 }
-
-
 
 .icon {
-
   font-size:45px;
-
   margin-bottom:20px;
-
 }
-
-
 
 .feature-card h3 {
-
   font-size:28px;
-
   margin-bottom:15px;
-
 }
-
-
 
 .feature-card p {
-
   color:#E5E7EB;
-
   line-height:1.6;
-
 }
-
-
 
 .feature-card button {
-
   margin-top:25px;
-
   padding:12px 28px;
-
   border:none;
-
   border-radius:12px;
-
   color:white;
-
 }
 
-
-
-/* ===========================
-   FEATURE BUTTON COLORS
-=========================== */
-
-
-.feature-card.creator button {
-
-  background:#10B981;
-
-}
-
-
-.feature-card.projects button {
-
-  background:#2563EB;
-
-}
-
-
-.feature-card.studio button {
-
-  background:#7C3AED;
-
-}
-
-
-
-/* ===========================
-   MOBILE
-=========================== */
-
+.feature-card.creator button { background:#10B981; }
+.feature-card.projects button { background:#2563EB; }
+.feature-card.studio button { background:#7C3AED; }
 
 @media(max-width:768px){
-
-
-.hero h1 {
-
-  font-size:55px;
-
-}
-
-
-
-.features-grid {
-
-  grid-template-columns:1fr;
-
-}
-
-
-
-.logo img {
-
-  width:320px;
-
-}
-
-
+  .landing-card h1 { font-size:34px; }
+  .landing-card p { font-size:17px; }
+  .hero h1 { font-size:55px; }
+  .features-grid { grid-template-columns:1fr; }
+  .logo img { width:320px; }
 }
