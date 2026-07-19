@@ -1,119 +1,48 @@
+import Link from "next/link";
+
 export default function Features() {
   return (
     <section className="features">
-
-      <h2>
-        Poznaj możliwości Project-AI
-      </h2>
-
-
+      <h2>Poznaj możliwości Project-AI</h2>
       <p className="features-subtitle">
-        Jeden system AI do tworzenia,
-        rozwijania i nauki projektów.
+        Jeden wspólny silnik AI do nauki, tworzenia i rozwijania projektów.
       </p>
 
-
-
       <div className="features-grid">
-
-
-        {/* KREATOR AI - UCZ SIĘ */}
-
         <article className="feature-card creator">
-
-          <div className="icon">
-            🟢
-          </div>
-
-
-          <h3>
-            Kreator AI
-          </h3>
-
-
+          <div className="icon">🟢</div>
+          <h3>Ucz się</h3>
           <p>
-            Rozpocznij swoją przygodę z tworzeniem.
-            AI poprowadzi Cię krok po kroku,
-            wyjaśni proces i pomoże zbudować
-            pierwszy projekt.
+            Nauka programowania, wyjaśnianie kodu i prowadzenie krok po kroku.
+            AI dopasowuje poziom pomocy do użytkownika.
           </p>
-
-
-          <button>
+          <Link href="/dashboard?mode=learn" className="card-link">
             Rozpocznij naukę →
-          </button>
-
+          </Link>
         </article>
-
-
-
-
-
-        {/* PROJEKTY - ROZWIJAJ */}
-
-        <article className="feature-card projects">
-
-          <div className="icon">
-            🔵
-          </div>
-
-
-          <h3>
-            Projekty
-          </h3>
-
-
-          <p>
-            Masz już projekt?
-            Analizuj pliki, poprawiaj kod,
-            dodawaj funkcje i rozwijaj swoje
-            rozwiązania razem z AI.
-          </p>
-
-
-          <button>
-            Moje projekty →
-          </button>
-
-        </article>
-
-
-
-
-
-        {/* STUDIO AI - TWÓRZ */}
 
         <article className="feature-card studio">
-
-          <div className="icon">
-            🟣
-          </div>
-
-
-          <h3>
-            Studio AI
-          </h3>
-
-
+          <div className="icon">🟣</div>
+          <h3>Twórz</h3>
           <p>
-            Twórz po swojemu.
-            Pracuj nad kodem, projektuj
-            aplikacje i gry, a AI będzie
-            Twoim zaawansowanym pomocnikiem.
+            Budowanie stron, aplikacji i gier z pomocą jednego silnika AI.
           </p>
-
-
-          <button>
-            Otwórz Studio →
-          </button>
-
+          <Link href="/dashboard?mode=create" className="card-link">
+            Zacznij tworzyć →
+          </Link>
         </article>
 
-
-
+        <article className="feature-card projects">
+          <div className="icon">🔵</div>
+          <h3>Projektuj</h3>
+          <p>
+            Rozwijaj istniejące projekty, analizuj kod i pracuj jak z zespołem AI.
+          </p>
+          <Link href="/dashboard?mode=design" className="card-link">
+            Moje projekty →
+          </Link>
+        </article>
       </div>
-
-
     </section>
   );
 }
