@@ -15,23 +15,23 @@ export default function Hero() {
 
       <div className="hero-content">
 
-<h1>
-  <span className="learn-text">
-  Ucz się.
-</span>
+        <h1>
+          <span className="learn-text">
+            Ucz się.
+          </span>
 
-<br />
+          <br />
 
-<span className="develop-text">
-  Rozwijaj.
-</span>
+          <span className="develop-text">
+            Rozwijaj.
+          </span>
 
-<br />
+          <br />
 
-<span className="create-text">
-  Twórz.
-</span>
-</h1>
+          <span className="create-text">
+            Twórz.
+          </span>
+        </h1>
 
         <p>
           Twoja platforma AI do tworzenia
@@ -52,66 +52,6 @@ export default function Hero() {
         </div>
 
       </div>
-.hero {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  padding:40px 20px 80px;
-}
-
-.hero-icon {
-  margin-bottom:20px;
-  opacity:.9;
-}
-
-.hero-content {
-  max-width:800px;
-}
-
-.hero-content p {
-  margin:20px auto 35px;
-  max-width:600px;
-  color:#D1D5DB;
-  font-size:20px;
-  line-height:1.6;
-}
-
-.hero-buttons {
-  display:flex;
-  gap:16px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.primary-button {
-  display:inline-block;
-  padding:14px 32px;
-  border:none;
-  border-radius:12px;
-  font-size:16px;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.primary-button:hover {
-  transform:translateY(-2px);
-}
-
-.secondary-button {
-  background:transparent;
-  color:#F9FAFB;
-  border:1px solid #374151;
-  padding:14px 32px;
-  border-radius:12px;
-  font-size:16px;
-  transition:.2s;
-}
-
-.secondary-button:hover {
-  border-color:#7C3AED;
-  transform:translateY(-2px);
-}
 
     </section>
   );
