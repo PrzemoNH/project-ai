@@ -40,3 +40,98 @@
 .projects-button {
   background:#2563EB;
 }
+.dashboard {
+  max-width:1200px;
+  margin:0 auto;
+  padding:40px 20px 80px;
+  text-align:center;
+}
+
+.dashboard h1 {
+  font-size:36px;
+  font-weight:800;
+}
+
+.dashboard-subtitle {
+  color:#D1D5DB;
+  font-size:18px;
+  margin:12px 0 40px;
+}
+
+.dashboard-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 30px;
+  border-bottom:1px solid #374151;
+}
+
+.dashboard-account {
+  background:#1F2937;
+  border:1px solid #374151;
+  color:#F9FAFB;
+  padding:10px 18px;
+  border-radius:10px;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.dashboard-account:hover {
+  border-color:#7C3AED;
+}
+
+.dashboard-cards {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  margin-bottom:50px;
+}
+
+.dashboard-card {
+  position:relative;
+  border-radius:24px;
+  padding:30px;
+  overflow:hidden;
+  text-align:left;
+}
+
+.card-background-icon {
+  position:absolute;
+  right:-30px;
+  bottom:-30px;
+  opacity:.12;
+}
+
+.card-content {
+  position:relative;
+  z-index:1;
+}
+
+.card-button {
+  margin-top:20px;
+  padding:12px 24px;
+  border:none;
+  border-radius:10px;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.projects-box {
+  background:linear-gradient(135deg,#1F2937,#111827);
+  border:1px solid #374151;
+  border-radius:24px;
+  padding:30px;
+  text-align:left;
+}
+
+.projects-box h2 {
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+@media(max-width:768px){
+  .dashboard-cards { grid-template-columns:1fr; }
+  .dashboard-header { padding:16px; }
+}
+
