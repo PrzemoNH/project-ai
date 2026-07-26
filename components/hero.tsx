@@ -4,14 +4,16 @@ export default function Hero() {
   return (
     <section className="hero">
 
-      <Image
-        src="/images/logo/project-ai-icon-bg.svg"
-        alt="Project-AI"
-        width={800}
-        height={800}
-        className="hero-icon"
-        priority
-      />
+      <div className="hero-icon-wrapper">
+        <Image
+          src="/images/logo/project-ai-icon-bg.svg"
+          alt="Project-AI"
+          width={800}
+          height={800}
+          className="hero-icon"
+          priority
+        />
+      </div>
 
       <div className="hero-content">
 
