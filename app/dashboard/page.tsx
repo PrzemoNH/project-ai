@@ -3,6 +3,7 @@ import "./dashboard.css";
 import DashboardHeader from "@/components/dashboard/dashboard-header";
 import DashboardCards from "@/components/dashboard/DashboardCards";
 import RecentProjects from "@/components/dashboard/RecentProjects";
+import SupabaseTest from "@/components/SupabaseTest";
 
 export default function Dashboard() {
   return (
@@ -19,6 +20,8 @@ export default function Dashboard() {
           Zacznij tworzyć lub kontynuuj swoje projekty.
         </p>
 
+        <SupabaseTest />
+
         <DashboardCards />
 
         <RecentProjects />
@@ -26,4 +29,4 @@ export default function Dashboard() {
       </main>
     </>
   );
-} 
+}
