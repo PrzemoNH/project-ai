@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function DashboardHeader() {
   return (
@@ -13,9 +14,9 @@ export default function DashboardHeader() {
         priority
       />
 
-      <button className="dashboard-account">
-        👤 Konto ⚠️
-      </button>
+      <Link href="/login" className="dashboard-account">
+        👤 Konto
+      </Link>
 
     </header>
   );
