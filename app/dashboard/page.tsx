@@ -1,13 +1,13 @@
 import "./dashboard.css";
 
+import AuthGuard from "@/components/dashboard/AuthGuard";
 import DashboardHeader from "@/components/dashboard/dashboard-header";
 import DashboardCards from "@/components/dashboard/DashboardCards";
 import RecentProjects from "@/components/dashboard/RecentProjects";
-import SupabaseTest from "@/components/SupabaseTest";
 
 export default function Dashboard() {
   return (
-    <>
+    <AuthGuard>
       <DashboardHeader />
 
       <main className="dashboard">
@@ -20,13 +20,11 @@ export default function Dashboard() {
           Zacznij tworzyć lub kontynuuj swoje projekty.
         </p>
 
-        <SupabaseTest />
-
         <DashboardCards />
 
         <RecentProjects />
 
       </main>
-    </>
+    </AuthGuard>
   );
 }
