@@ -148,4 +148,6 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
           </p>
         </div>
       </div>
-    
+    >/div>
+  );
+}
