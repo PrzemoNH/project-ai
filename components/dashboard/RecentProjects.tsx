@@ -125,4 +125,14 @@ export default function RecentProjects() {
 
                 <strong style={{ flex: 1 }}>{project.name}</strong>
 
-                
+                <span style={{ color: "#D1D5DB", fontSize: "14px" }}>
+                  {project.status}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+  );
+}
