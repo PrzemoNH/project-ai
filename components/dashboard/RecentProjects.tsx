@@ -27,6 +27,7 @@ export default function RecentProjects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [creating, setCreating] = useState(false);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   async function loadProjects() {
     setLoading(true);
@@ -70,6 +71,21 @@ export default function RecentProjects() {
     }
 
     setCreating(false);
+  }
+
+  async function handleDelete(id: string) {
+    const confirmed = window.confirm("Na pewno usunąć ten projekt?");
+    if (!confirmed) return;
+
+    setDeletingId(id);
+
+    const { error } = await supabase.from("projects").delete().eq("id", id);
+
+    if (!error) {
+      setProjects((prev) => prev.filter((p) => p.id !== id));
+    }
+
+    setDeletingId(null);
   }
 
   return (
@@ -128,6 +144,22 @@ export default function RecentProjects() {
                 <span style={{ color: "#D1D5DB", fontSize: "14px" }}>
                   {project.status}
                 </span>
+
+                <button
+                  onClick={() => handleDelete(project.id)}
+                  disabled={deletingId === project.id}
+                  style={{
+                    background: "transparent",
+                    border: "1px solid #DC2626",
+                    color: "#DC2626",
+                    borderRadius: "8px",
+                    padding: "6px 12px",
+                    fontSize: "13px",
+                    cursor: "pointer",
+                  }}
+                >
+                  {deletingId === project.id ? "..." : "Usuń"}
+                </button>
               </li>
             );
           })}
