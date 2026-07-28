@@ -4,9 +4,10 @@ import Image from "next/image";
 export default function Features() {
   return (
     <section className="features" id="features">
-      <h2>Poznaj możliwości Project-AI</h2>
+      <h2>Wybierz swoją drogę</h2>
       <p className="features-subtitle">
-        Jeden wspólny silnik AI do nauki, tworzenia i rozwijania projektów.
+        Nieważne, czy dopiero zaczynasz, czy masz już pomysł gotowy do realizacji —
+        znajdziesz tu dokładnie to, czego potrzebujesz.
       </p>
 
       <div className="features-grid">
@@ -23,11 +24,11 @@ export default function Features() {
             <div className="icon">🟢</div>
             <h3>Ucz się</h3>
             <p>
-              Nauka programowania, wyjaśnianie kodu i prowadzenie krok po kroku.
-              AI dopasowuje poziom pomocy do użytkownika.
+              Zrozum programowanie w swoim tempie. AI tłumaczy każdy fragment
+              kodu tak, jakbyś miał osobistego nauczyciela zawsze pod ręką.
             </p>
             <Link href="/dashboard?mode=learn" className="card-link">
-              Rozpocznij naukę →
+              Zacznij naukę →
             </Link>
           </div>
         </article>
@@ -44,7 +45,8 @@ export default function Features() {
             <div className="icon">🟣</div>
             <h3>Twórz</h3>
             <p>
-              Budowanie stron, aplikacji i gier z pomocą jednego silnika AI.
+              Masz wizję strony, gry albo aplikacji? Opisz ją, a AI zbuduje
+              pierwszą wersję szybciej, niż zdążysz zaparzyć kawę.
             </p>
             <Link href="/dashboard?mode=create" className="card-link">
               Zacznij tworzyć →
@@ -64,10 +66,11 @@ export default function Features() {
             <div className="icon">🔵</div>
             <h3>Projektuj</h3>
             <p>
-              Rozwijaj istniejące projekty, analizuj kod i pracuj jak z zespołem AI.
+              Masz już coś stworzonego? Rozwijaj to dalej z AI jako partnerem,
+              który rozumie Twój kod i pomaga iść o krok dalej.
             </p>
             <Link href="/dashboard?mode=design" className="card-link">
-              Moje projekty →
+              Rozwijaj projekt →
             </Link>
           </div>
         </article>
