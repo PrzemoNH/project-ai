@@ -5,18 +5,17 @@ export default function LandingCard() {
     <section className="landing-shell">
       <div className="landing-card">
         <h1>
-          Jedno miejsce do nauki,
+          Masz pomysł?
           <br />
-          tworzenia i projektowania z AI.
+          AI zamieni go w gotowy projekt.
         </h1>
-
         <p>
-          Project-AI pomaga tworzyć strony internetowe, gry i aplikacje
-          z wykorzystaniem sztucznej inteligencji.
+          Nie musisz umieć programować, żeby stworzyć własną stronę, grę czy
+          aplikację. Project-AI prowadzi Cię krok po kroku — Ty opisujesz,
+          co chcesz zbudować, a AI robi resztę.
         </p>
-
         <Link href="/dashboard" className="primary-button">
-          Rozpocznij tworzenie →
+          Zacznij za darmo →
         </Link>
       </div>
     </section>
