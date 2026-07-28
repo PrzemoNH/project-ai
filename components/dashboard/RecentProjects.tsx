@@ -11,6 +11,18 @@ type Project = {
   created_at: string;
 };
 
+const modeColors: Record<string, string> = {
+  learn: "#10B981",
+  create: "#7C3AED",
+  design: "#2563EB",
+};
+
+const modeLabels: Record<string, string> = {
+  learn: "Ucz się",
+  create: "Twórz",
+  design: "Projektuj",
+};
+
 export default function RecentProjects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -79,21 +91,38 @@ export default function RecentProjects() {
         <p>Nie masz jeszcze żadnych projektów. Stwórz pierwszy!</p>
       ) : (
         <ul style={{ listStyle: "none", padding: 0 }}>
-          {projects.map((project) => (
-            <li
-              key={project.id}
-              style={{
-                padding: "14px 0",
-                borderBottom: "1px solid #374151",
-              }}
-            >
-              <strong>{project.name}</strong>
-              {" — "}
-              <span style={{ color: "#D1D5DB" }}>{project.status}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
+          {projects.map((project) => {
+            const color = project.mode ? modeColors[project.mode] : "#6B7280";
+            const label = project.mode ? modeLabels[project.mode] : "Ogólny";
+
+            return (
+              <li
+                key={project.id}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  padding: "14px 16px",
+                  marginBottom: "10px",
+                  borderRadius: "12px",
+                  borderLeft: `4px solid ${color}`,
+                  background: "rgba(255,255,255,0.03)",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    color: color,
+                    border: `1px solid ${color}`,
+                    borderRadius: "999px",
+                    padding: "3px 10px",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {label}
+                </span>
+
+                <strong style={{ flex: 1 }}>{project.name}</strong>
+
+                
