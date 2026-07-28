@@ -37,9 +37,9 @@ export default function Hero() {
         </h1>
 
         <p>
-          Twoja platforma AI do tworzenia
+          Setki osób bez doświadczenia w programowaniu już budują
           <br />
-          stron internetowych, gier i aplikacji.
+          swoje pierwsze projekty razem z AI. Ty możesz być następny.
         </p>
 
         <div className="hero-buttons">
