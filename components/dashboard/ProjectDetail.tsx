@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
+import ProjectChat from "@/components/dashboard/ProjectChat";
+
 
 type Project = {
   id: string;
