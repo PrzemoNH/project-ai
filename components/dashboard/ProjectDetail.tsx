@@ -149,7 +149,10 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
             {new Date(project.created_at).toLocaleDateString("pl-PL")}
           </p>
         </div>
+
+        <ProjectChat projectId={projectId} />
       </div>
     </div>
   );
+
 }
