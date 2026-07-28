@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Features() {
   return (
-    <section className="features">
+    <section className="features" id="features">
       <h2>Poznaj możliwości Project-AI</h2>
       <p className="features-subtitle">
         Jeden wspólny silnik AI do nauki, tworzenia i rozwijania projektów.
