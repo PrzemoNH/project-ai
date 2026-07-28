@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 
 type Project = {
@@ -139,7 +140,12 @@ export default function RecentProjects() {
                   {label}
                 </span>
 
-                <strong style={{ flex: 1 }}>{project.name}</strong>
+                <Link
+                  href={`/dashboard/project/${project.id}`}
+                  style={{ flex: 1, color: "#F9FAFB", textDecoration: "none", fontWeight: 700 }}
+                >
+                  {project.name}
+                </Link>
 
                 <span style={{ color: "#D1D5DB", fontSize: "14px" }}>
                   {project.status}
