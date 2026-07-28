@@ -1,8 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 
+const SITE_BUILDER_INSTRUCTION = `Jesteś silnikiem AI budującym strony internetowe wewnątrz platformy Project-AI.
+
+Gdy użytkownik opisuje stronę, którą chce zbudować lub zmienić, Twoim zadaniem jest wygenerować KOMPLETNY, samodzielny kod HTML tej strony (z CSS w znaczniku <style> wewnątrz <head>, bez zewnętrznych plików).
+
+ZASADY:
+1. Jeśli to pierwsza wiadomość opisująca stronę — stwórz od podstaw kompletny dokument HTML (<!DOCTYPE html>...</html>).
+2. Jeśli użytkownik prosi o zmianę w istniejącej stronie (masz ją poniżej w sekcji AKTUALNA STRONA) — zmodyfikuj ją, zachowując resztę bez zmian, i zwróć CAŁY zaktualizowany dokument HTML.
+3. Odpowiadaj WYŁĄCZNIE kodem HTML — żadnych wyjaśnień przed ani po, żadnych znaczników markdown (bez \`\`\`html).
+4. Strona ma być responsywna, estetyczna, z sensownym, nowoczesnym designem (czytelne fonty, odstępy, kolory dopasowane do tematu strony).
+5. Jeśli wiadomość użytkownika to pytanie lub prośba o wyjaśnienie (nie dotyczy budowy strony) — odpowiedz normalnie, zwykłym tekstem, bez HTML.`;
+
 export async function POST(request: NextRequest) {
   try {
-    const { message } = await request.json();
+    const { message, currentHtml, history } = await request.json();
 
     if (!message || typeof message !== "string") {
       return NextResponse.json({ error: "Brak wiadomości" }, { status: 400 });
@@ -17,8 +28,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    let promptText = message;
+    if (currentHtml) {
+      promptText = `AKTUALNA STRONA (zmodyfikuj ją zgodnie z prośbą poniżej, zwróć całość):\n\n${currentHtml}\n\nPROŚBA UŻYTKOWNIKA:\n${message}`;
+    }
+
+    const contents = [
+      ...(Array.isArray(history) ? history : []),
+      { role: "user", parts: [{ text: promptText }] },
+    ];
+
     const response = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent",
       {
         method: "POST",
         headers: {
@@ -26,12 +47,10 @@ export async function POST(request: NextRequest) {
           "x-goog-api-key": apiKey,
         },
         body: JSON.stringify({
-          contents: [
-            {
-              role: "user",
-              parts: [{ text: message }],
-            },
-          ],
+          system_instruction: {
+            parts: [{ text: SITE_BUILDER_INSTRUCTION }],
+          },
+          contents,
         }),
       }
     );
