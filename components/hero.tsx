@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -43,13 +44,13 @@ export default function Hero() {
 
         <div className="hero-buttons">
 
-          <button className="primary-button">
+          <Link href="/dashboard" className="primary-button">
             Rozpocznij tworzenie →
-          </button>
+          </Link>
 
-          <button className="secondary-button">
+          <Link href="#features" className="secondary-button">
             Zobacz możliwości
-          </button>
+          </Link>
 
         </div>
 
