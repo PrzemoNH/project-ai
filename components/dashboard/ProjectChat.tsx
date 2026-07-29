@@ -49,7 +49,7 @@ const WHAT_OPTIONS = [
 
 const TECH_OPTIONS = ["HTML", "CSS", "JavaScript", "Animacje", "Formularz kontaktowy"];
 
-export default function ProjectChat({ projectId }: { projectId: string }) {
+export default function ProjectChat({ projectId, mode }: { projectId: string; mode: string | null }) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [files, setFiles] = useState<ProjectFile[]>([]);
   const [input, setInput] = useState("");
