@@ -225,3 +225,61 @@ button {
   border-color:#7C3AED;
   transform:translateY(-2px);
 }
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 20px;
+}
+
+.feature-list li {
+  padding: 4px 0;
+  font-size: 14px;
+  color: #D1D5DB;
+}
+
+.feature-list li::before {
+  content: "✓ ";
+  color: inherit;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.how-it-works {
+  max-width: 1200px;
+  margin: 15px auto 80px;
+  padding: 20px;
+  text-align: center;
+}
+
+.how-it-works-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.how-step {
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid #374151;
+  background: rgba(255,255,255,0.02);
+  text-align: left;
+}
+
+.how-step-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(90deg,#2563EB,#7C3AED);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+@media(max-width:768px){
+  .how-it-works-grid { grid-template-columns: 1fr; }
+}
+
