@@ -19,6 +19,7 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [view, setView] = useState<"preview" | "code">("preview");
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, sending]);
 
   async function saveState(updatedMessages: ChatMessage[], updatedHtml: string | null) {
     await supabase
@@ -93,6 +94,7 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
         const withReply = [...withUserMessage, { role: "ai" as const, text: confirmMsg }];
         setMessages(withReply);
         setSiteHtml(html);
+        setView("preview");
         await saveState(withReply, html);
       } else {
         const withReply = [...withUserMessage, { role: "ai" as const, text: data.reply }];
@@ -110,6 +112,19 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
     setSending(false);
   }
 
+  function handleDownload() {
+    if (!siteHtml) return;
+    const blob = new Blob([siteHtml], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "strona.html";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
   if (!loaded) {
     return <p style={{ color: "#6B7280", marginTop: "20px" }}>Ładowanie...</p>;
   }
@@ -118,18 +133,91 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
     <div style={{ marginTop: "24px" }}>
       {siteHtml && (
         <div style={{ marginBottom: "20px" }}>
-          <h3 style={{ marginBottom: "10px" }}>Podgląd strony</h3>
-          <iframe
-            srcDoc={siteHtml}
+          <div
             style={{
-              width: "100%",
-              height: "500px",
-              border: "1px solid #374151",
-              borderRadius: "12px",
-              background: "white",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: "10px",
             }}
-            sandbox=""
-          />
+          >
+            <div style={{ display: "flex", gap: "6px" }}>
+              <button
+                onClick={() => setView("preview")}
+                style={{
+                  padding: "6px 14px",
+                  borderRadius: "8px",
+                  border: "1px solid #374151",
+                  background: view === "preview" ? "#2563EB" : "transparent",
+                  color: "#F9FAFB",
+                  fontSize: "13px",
+                  cursor: "pointer",
+                }}
+              >
+                Podgląd
+              </button>
+              <button
+                onClick={() => setView("code")}
+                style={{
+                  padding: "6px 14px",
+                  borderRadius: "8px",
+                  border: "1px solid #374151",
+                  background: view === "code" ? "#2563EB" : "transparent",
+                  color: "#F9FAFB",
+                  fontSize: "13px",
+                  cursor: "pointer",
+                }}
+              >
+                Kod źródłowy
+              </button>
+            </div>
+
+            <button
+              onClick={handleDownload}
+              style={{
+                padding: "6px 14px",
+                borderRadius: "8px",
+                border: "1px solid #374151",
+                background: "transparent",
+                color: "#D1D5DB",
+                fontSize: "13px",
+                cursor: "pointer",
+              }}
+            >
+              ⬇ Pobierz HTML
+            </button>
+          </div>
+
+          {view === "preview" ? (
+            <iframe
+              srcDoc={siteHtml}
+              style={{
+                width: "100%",
+                height: "500px",
+                border: "1px solid #374151",
+                borderRadius: "12px",
+                background: "white",
+              }}
+              sandbox="allow-scripts"
+            />
+          ) : (
+            <textarea
+              readOnly
+              value={siteHtml}
+              style={{
+                width: "100%",
+                height: "500px",
+                border: "1px solid #374151",
+                borderRadius: "12px",
+                background: "#0B0F19",
+                color: "#93C5FD",
+                fontFamily: "monospace",
+                fontSize: "12px",
+                padding: "14px",
+                resize: "vertical",
+              }}
+            />
+          )}
         </div>
       )}
 
@@ -177,6 +265,23 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
               {msg.text}
             </div>
           ))}
+
+          {sending && (
+            <div
+              style={{
+                alignSelf: "flex-start",
+                maxWidth: "80%",
+                padding: "10px 14px",
+                borderRadius: "12px",
+                background: "#1F2937",
+                color: "#9CA3AF",
+                fontSize: "14px",
+                fontStyle: "italic",
+              }}
+            >
+              AI tworzy odpowiedź...
+            </div>
+          )}
 
           <div ref={bottomRef} />
         </div>
