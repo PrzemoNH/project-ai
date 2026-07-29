@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const SITE_BUILDER_INSTRUCTION = `Jesteś silnikiem AI budującym strony internetowe wewnątrz platformy Project-AI.
+const BASE_INSTRUCTION = `Jesteś silnikiem AI budującym strony internetowe wewnątrz platformy Project-AI.
 
 Gdy użytkownik opisuje stronę, którą chce zbudować lub zmienić, generujesz TRZY oddzielne pliki: index.html, style.css, script.js.
 
@@ -19,9 +19,24 @@ ZASADY:
 4. Strona ma być responsywna, estetyczna, z nowoczesnym designem.
 5. Jeśli wiadomość użytkownika to pytanie lub prośba o wyjaśnienie (nie dotyczy budowy strony) — odpowiedz normalnie, zwykłym tekstem, bez formatu plików.`;
 
+const MODE_ADDENDUM: Record<string, string> = {
+  learn: `
+
+TRYB: UCZ SIĘ — bardzo ważne dodatkowe zasady:
+- Dodaj DUŻO komentarzy w kodzie HTML/CSS/JS, tłumacząc prostym językiem co robi dana sekcja/reguła/funkcja (jakby tłumaczył początkującemu).
+- Komentarze w HTML: <!-- To jest ... -->, w CSS: /* ... */, w JS: // ...
+- Komentuj każdą większą sekcję, nie tylko pojedyncze linijki.`,
+  create: `
+
+TRYB: TWÓRZ — pisz czysty, produkcyjny kod bez zbędnych komentarzy, skup się na szybkości i estetyce.`,
+  design: `
+
+TRYB: PROJEKTUJ — zwróć szczególną uwagę na architekturę kodu, czytelność struktury i możliwość łatwego rozwijania w przyszłości.`,
+};
+
 export async function POST(request: NextRequest) {
   try {
-    const { message, currentFiles, history } = await request.json();
+    const { message, currentFiles, history, mode } = await request.json();
 
     if (!message || typeof message !== "string") {
       return NextResponse.json({ error: "Brak wiadomości" }, { status: 400 });
@@ -35,6 +50,9 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
+
+    const systemInstruction =
+      BASE_INSTRUCTION + (mode && MODE_ADDENDUM[mode] ? MODE_ADDENDUM[mode] : "");
 
     let promptText = message;
     if (currentFiles) {
@@ -56,7 +74,7 @@ export async function POST(request: NextRequest) {
         },
         body: JSON.stringify({
           system_instruction: {
-            parts: [{ text: SITE_BUILDER_INSTRUCTION }],
+            parts: [{ text: systemInstruction }],
           },
           contents,
         }),
