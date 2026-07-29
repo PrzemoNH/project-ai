@@ -2,18 +2,26 @@ import { NextRequest, NextResponse } from "next/server";
 
 const SITE_BUILDER_INSTRUCTION = `Jesteś silnikiem AI budującym strony internetowe wewnątrz platformy Project-AI.
 
-Gdy użytkownik opisuje stronę, którą chce zbudować lub zmienić, Twoim zadaniem jest wygenerować KOMPLETNY, samodzielny kod HTML tej strony (z CSS w znaczniku <style> wewnątrz <head>, bez zewnętrznych plików).
+Gdy użytkownik opisuje stronę, którą chce zbudować lub zmienić, generujesz TRZY oddzielne pliki: index.html, style.css, script.js.
+
+FORMAT ODPOWIEDZI (bardzo ważne, trzymaj się dokładnie):
+---FILE:index.html---
+(tu pełny kod HTML, w <head> dołącz: <link rel="stylesheet" href="style.css"> oraz przed </body>: <script src="script.js"></script>)
+---FILE:style.css---
+(tu pełny kod CSS)
+---FILE:script.js---
+(tu kod JavaScript, jeśli strona go potrzebuje; jeśli nie — zostaw pusty komentarz // brak dodatkowego JS)
 
 ZASADY:
-1. Jeśli to pierwsza wiadomość opisująca stronę — stwórz od podstaw kompletny dokument HTML (<!DOCTYPE html>...</html>).
-2. Jeśli użytkownik prosi o zmianę w istniejącej stronie (masz ją poniżej w sekcji AKTUALNA STRONA) — zmodyfikuj ją, zachowując resztę bez zmian, i zwróć CAŁY zaktualizowany dokument HTML.
-3. Odpowiadaj WYŁĄCZNIE kodem HTML — żadnych wyjaśnień przed ani po, żadnych znaczników markdown (bez \`\`\`html).
-4. Strona ma być responsywna, estetyczna, z sensownym, nowoczesnym designem (czytelne fonty, odstępy, kolory dopasowane do tematu strony).
-5. Jeśli wiadomość użytkownika to pytanie lub prośba o wyjaśnienie (nie dotyczy budowy strony) — odpowiedz normalnie, zwykłym tekstem, bez HTML.`;
+1. Jeśli to pierwsza wiadomość opisująca stronę — stwórz wszystkie trzy pliki od podstaw.
+2. Jeśli użytkownik prosi o zmianę w istniejącej stronie (masz ją poniżej w sekcji AKTUALNE PLIKI) — zmodyfikuj odpowiednie pliki, zachowując resztę bez zmian, i zwróć WSZYSTKIE TRZY pliki na nowo w tym samym formacie.
+3. Odpowiadaj WYŁĄCZNIE w formacie powyżej — żadnych wyjaśnień przed ani po, żadnych znaczników markdown.
+4. Strona ma być responsywna, estetyczna, z nowoczesnym designem.
+5. Jeśli wiadomość użytkownika to pytanie lub prośba o wyjaśnienie (nie dotyczy budowy strony) — odpowiedz normalnie, zwykłym tekstem, bez formatu plików.`;
 
 export async function POST(request: NextRequest) {
   try {
-    const { message, currentHtml, history } = await request.json();
+    const { message, currentFiles, history } = await request.json();
 
     if (!message || typeof message !== "string") {
       return NextResponse.json({ error: "Brak wiadomości" }, { status: 400 });
@@ -29,8 +37,8 @@ export async function POST(request: NextRequest) {
     }
 
     let promptText = message;
-    if (currentHtml) {
-      promptText = `AKTUALNA STRONA (zmodyfikuj ją zgodnie z prośbą poniżej, zwróć całość):\n\n${currentHtml}\n\nPROŚBA UŻYTKOWNIKA:\n${message}`;
+    if (currentFiles) {
+      promptText = `AKTUALNE PLIKI (zmodyfikuj zgodnie z prośbą, zwróć wszystkie trzy na nowo):\n\n${currentFiles}\n\nPROŚBA UŻYTKOWNIKA:\n${message}`;
     }
 
     const contents = [
