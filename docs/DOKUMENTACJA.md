@@ -26,6 +26,7 @@ Każdy commit na gałęzi `main` w GitHubie automatycznie uruchamia nowy build n
 
 ## Struktura folderów
 
+```
 project-ai/
 ├── app/                    ← strony (routing Next.js)
 │   ├── layout.tsx          ← wspólny szkielet całej strony
@@ -34,19 +35,25 @@ project-ai/
 │   ├── dashboard/
 │   │   ├── page.tsx        ← strona /dashboard
 │   │   └── dashboard.css   ← style dla dashboardu
-│   └── login/
-│       └── page.tsx        ← strona /login
+│   ├── login/
+│   │   └── page.tsx        ← strona /login
+│   └── api/
+│       └── chat/
+│           └── route.ts    ← silnik AI (backend)
 │
 ├── components/              ← elementy UI, pogrupowane tematycznie
 │   ├── header.tsx
 │   ├── hero.tsx
 │   ├── features.tsx
+│   ├── HowItWorks.tsx
 │   ├── footer.tsx
 │   ├── LandingCard.tsx
 │   ├── dashboard/
 │   │   ├── dashboard-header.tsx
 │   │   ├── DashboardCards.tsx
 │   │   ├── RecentProjects.tsx
+│   │   ├── ProjectDetail.tsx
+│   │   ├── ProjectChat.tsx
 │   │   └── AuthGuard.tsx
 │   ├── login/
 │   │   └── LoginForm.tsx
@@ -62,6 +69,7 @@ project-ai/
 ├── next.config.ts             ← konfiguracja Next.js
 ├── tsconfig.json               ← konfiguracja TypeScript
 └── .gitignore                   ← pliki wykluczone z GitHuba (np. sekrety)
+```
 
 ---
 
