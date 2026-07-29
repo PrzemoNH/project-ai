@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import JSZip from "jszip";
 import { supabase } from "@/lib/supabase";
 
 type ChatMessage = {
@@ -8,9 +9,35 @@ type ChatMessage = {
   text: string;
 };
 
-function extractHtml(text: string): string | null {
-  const match = text.match(/<!DOCTYPE html[\s\S]*<\/html>/i);
-  return match ? match[0] : null;
+type ProjectFile = {
+  name: string;
+  content: string;
+};
+
+function extractFiles(text: string): ProjectFile[] {
+  const regex = /---FILE:(.+?)---\s*([\s\S]*?)(?=---FILE:|$)/g;
+  const files: ProjectFile[] = [];
+  let match;
+  while ((match = regex.exec(text)) !== null) {
+    files.push({ name: match[1].trim(), content: match[2].trim() });
+  }
+  return files;
+}
+
+function buildPreviewHtml(files: ProjectFile[]): string {
+  const html = files.find((f) => f.name === "index.html")?.content ?? "";
+  const css = files.find((f) => f.name === "style.css")?.content ?? "";
+  const js = files.find((f) => f.name === "script.js")?.content ?? "";
+
+  return html
+    .replace(
+      /<link[^>]*href=["']style\.css["'][^>]*>/i,
+      `<style>${css}</style>`
+    )
+    .replace(
+      /<script[^>]*src=["']script\.js["'][^>]*><\/script>/i,
+      `<script>${js}</script>`
+    );
 }
 
 const WHAT_OPTIONS = [
@@ -24,11 +51,13 @@ const TECH_OPTIONS = ["HTML", "CSS", "JavaScript", "Animacje", "Formularz kontak
 
 export default function ProjectChat({ projectId }: { projectId: string }) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [siteHtml, setSiteHtml] = useState<string | null>(null);
+  const [files, setFiles] = useState<ProjectFile[]>([]);
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [view, setView] = useState<"preview" | "code">("preview");
+  const [activeFile, setActiveFile] = useState("index.html");
+  const [copied, setCopied] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   const [builderOpen, setBuilderOpen] = useState(false);
@@ -48,7 +77,7 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
 
       if (!error && data?.content) {
         setMessages(data.content.messages ?? []);
-        setSiteHtml(data.content.site_html ?? null);
+        setFiles(data.content.files ?? []);
       }
 
       setLoaded(true);
@@ -61,11 +90,11 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, sending]);
 
-  async function saveState(updatedMessages: ChatMessage[], updatedHtml: string | null) {
+  async function saveState(updatedMessages: ChatMessage[], updatedFiles: ProjectFile[]) {
     await supabase
       .from("projects")
       .update({
-        content: { messages: updatedMessages, site_html: updatedHtml },
+        content: { messages: updatedMessages, files: updatedFiles },
         updated_at: new Date().toISOString(),
       })
       .eq("id", projectId);
@@ -81,16 +110,9 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
     let prompt = `Utwórz ${what}`;
     if (topic.trim()) prompt += ` na temat: ${topic.trim()}`;
     prompt += ".";
-
-    if (tech.length > 0) {
-      prompt += ` Wykorzystaj: ${tech.join(", ")}.`;
-    }
-    if (colors.trim()) {
-      prompt += ` Kolorystyka: ${colors.trim()}.`;
-    }
-    if (extra.trim()) {
-      prompt += ` Dodatkowo: ${extra.trim()}.`;
-    }
+    if (tech.length > 0) prompt += ` Wykorzystaj: ${tech.join(", ")}.`;
+    if (colors.trim()) prompt += ` Kolorystyka: ${colors.trim()}.`;
+    if (extra.trim()) prompt += ` Dodatkowo: ${extra.trim()}.`;
 
     setInput(prompt);
     setBuilderOpen(false);
@@ -105,14 +127,16 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
     setInput("");
     setSending(true);
 
+    const currentFilesText =
+      files.length > 0
+        ? files.map((f) => `---FILE:${f.name}---\n${f.content}`).join("\n\n")
+        : null;
+
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: text,
-          currentHtml: siteHtml,
-        }),
+        body: JSON.stringify({ message: text, currentFiles: currentFilesText }),
       });
 
       const data = await res.json();
@@ -123,24 +147,25 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
           { role: "ai" as const, text: "❌ " + (data.error ?? "Błąd AI") },
         ];
         setMessages(withError);
-        await saveState(withError, siteHtml);
+        await saveState(withError, files);
         setSending(false);
         return;
       }
 
-      const html = extractHtml(data.reply);
+      const newFiles = extractFiles(data.reply);
 
-      if (html) {
-        const confirmMsg = "✅ Strona zaktualizowana — sprawdź podgląd poniżej.";
+      if (newFiles.length > 0) {
+        const confirmMsg = `✅ Wygenerowano pliki: ${newFiles.map((f) => f.name).join(", ")}`;
         const withReply = [...withUserMessage, { role: "ai" as const, text: confirmMsg }];
         setMessages(withReply);
-        setSiteHtml(html);
+        setFiles(newFiles);
+        setActiveFile(newFiles[0].name);
         setView("preview");
-        await saveState(withReply, html);
+        await saveState(withReply, newFiles);
       } else {
         const withReply = [...withUserMessage, { role: "ai" as const, text: data.reply }];
         setMessages(withReply);
-        await saveState(withReply, siteHtml);
+        await saveState(withReply, files);
       }
     } catch {
       const withError = [
@@ -153,13 +178,23 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
     setSending(false);
   }
 
-  function handleDownload() {
-    if (!siteHtml) return;
-    const blob = new Blob([siteHtml], { type: "text/html" });
+  function handleCopy() {
+    const current = files.find((f) => f.name === activeFile);
+    if (!current) return;
+    navigator.clipboard.writeText(current.content);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
+  async function handleDownloadZip() {
+    if (files.length === 0) return;
+    const zip = new JSZip();
+    files.forEach((f) => zip.file(f.name, f.content));
+    const blob = await zip.generateAsync({ type: "blob" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "strona.html";
+    a.download = "projekt.zip";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -180,6 +215,8 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
     cursor: "pointer",
   });
 
+  const activeFileContent = files.find((f) => f.name === activeFile)?.content ?? "";
+
   return (
     <div style={{ marginTop: "24px" }}>
       <div
@@ -190,14 +227,7 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
           background: "rgba(255,255,255,0.02)",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "12px",
-          }}
-        >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
           <h3>Asystent AI</h3>
           <button
             onClick={() => setBuilderOpen((v) => !v)}
@@ -216,44 +246,20 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
         </div>
 
         {builderOpen && (
-          <div
-            style={{
-              border: "1px solid #7C3AED",
-              borderRadius: "12px",
-              padding: "16px",
-              marginBottom: "16px",
-              background: "rgba(124,58,237,0.05)",
-            }}
-          >
-            <p style={{ fontSize: "13px", color: "#D1D5DB", marginBottom: "8px" }}>
-              Co chcesz zbudować?
-            </p>
+          <div style={{ border: "1px solid #7C3AED", borderRadius: "12px", padding: "16px", marginBottom: "16px", background: "rgba(124,58,237,0.05)" }}>
+            <p style={{ fontSize: "13px", color: "#D1D5DB", marginBottom: "8px" }}>Co chcesz zbudować?</p>
             <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "16px" }}>
               {WHAT_OPTIONS.map((opt) => (
-                <button
-                  key={opt.value}
-                  onClick={() => setWhat(opt.value)}
-                  style={chipStyle(what === opt.value)}
-                >
+                <button key={opt.value} onClick={() => setWhat(opt.value)} style={chipStyle(what === opt.value)}>
                   {opt.label}
                 </button>
               ))}
             </div>
 
-            <p style={{ fontSize: "13px", color: "#D1D5DB", marginBottom: "8px" }}>
-              Temat / branża (opcjonalnie)
-            </p>
-            <input
-              type="text"
-              value={topic}
-              onChange={(e) => setTopic(e.target.value)}
-              placeholder="np. kawiarnia, siłownia, portfolio fotografa..."
-              style={{ width: "100%", padding: "8px", marginBottom: "16px" }}
-            />
+            <p style={{ fontSize: "13px", color: "#D1D5DB", marginBottom: "8px" }}>Temat / branża (opcjonalnie)</p>
+            <input type="text" value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="np. kawiarnia, siłownia..." style={{ width: "100%", padding: "8px", marginBottom: "16px" }} />
 
-            <p style={{ fontSize: "13px", color: "#D1D5DB", marginBottom: "8px" }}>
-              Technologie / elementy
-            </p>
+            <p style={{ fontSize: "13px", color: "#D1D5DB", marginBottom: "8px" }}>Technologie / elementy</p>
             <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "16px" }}>
               {TECH_OPTIONS.map((t) => (
                 <button key={t} onClick={() => toggleTech(t)} style={chipStyle(tech.includes(t))}>
@@ -262,48 +268,19 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
               ))}
             </div>
 
-            <p style={{ fontSize: "13px", color: "#D1D5DB", marginBottom: "8px" }}>
-              Kolory / styl (opcjonalnie)
-            </p>
-            <input
-              type="text"
-              value={colors}
-              onChange={(e) => setColors(e.target.value)}
-              placeholder="np. ciemne tło z akcentami pomarańczu"
-              style={{ width: "100%", padding: "8px", marginBottom: "16px" }}
-            />
+            <p style={{ fontSize: "13px", color: "#D1D5DB", marginBottom: "8px" }}>Kolory / styl (opcjonalnie)</p>
+            <input type="text" value={colors} onChange={(e) => setColors(e.target.value)} placeholder="np. ciemne tło z akcentami pomarańczu" style={{ width: "100%", padding: "8px", marginBottom: "16px" }} />
 
-            <p style={{ fontSize: "13px", color: "#D1D5DB", marginBottom: "8px" }}>
-              Dodatkowe wymagania (opcjonalnie)
-            </p>
-            <input
-              type="text"
-              value={extra}
-              onChange={(e) => setExtra(e.target.value)}
-              placeholder="np. sekcja z opiniami, formularz kontaktowy"
-              style={{ width: "100%", padding: "8px", marginBottom: "16px" }}
-            />
+            <p style={{ fontSize: "13px", color: "#D1D5DB", marginBottom: "8px" }}>Dodatkowe wymagania (opcjonalnie)</p>
+            <input type="text" value={extra} onChange={(e) => setExtra(e.target.value)} placeholder="np. sekcja z opiniami" style={{ width: "100%", padding: "8px", marginBottom: "16px" }} />
 
-            <button
-              onClick={buildPromptFromForm}
-              className="card-button"
-              style={{ background: "#7C3AED", width: "100%" }}
-            >
+            <button onClick={buildPromptFromForm} className="card-button" style={{ background: "#7C3AED", width: "100%" }}>
               ✨ Zbuduj prompt
             </button>
           </div>
         )}
 
-        <div
-          style={{
-            maxHeight: "300px",
-            overflowY: "auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px",
-            marginBottom: "14px",
-          }}
-        >
+        <div style={{ maxHeight: "300px", overflowY: "auto", display: "flex", flexDirection: "column", gap: "10px", marginBottom: "14px" }}>
           {messages.length === 0 && (
             <p style={{ color: "#6B7280", fontSize: "14px" }}>
               Użyj &quot;Kreatora promptu&quot; powyżej albo opisz stronę własnymi słowami.
@@ -311,36 +288,13 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
           )}
 
           {messages.map((msg, i) => (
-            <div
-              key={i}
-              style={{
-                alignSelf: msg.role === "user" ? "flex-end" : "flex-start",
-                maxWidth: "80%",
-                padding: "10px 14px",
-                borderRadius: "12px",
-                background: msg.role === "user" ? "#2563EB" : "#1F2937",
-                color: "#F9FAFB",
-                whiteSpace: "pre-wrap",
-                fontSize: "14px",
-              }}
-            >
+            <div key={i} style={{ alignSelf: msg.role === "user" ? "flex-end" : "flex-start", maxWidth: "80%", padding: "10px 14px", borderRadius: "12px", background: msg.role === "user" ? "#2563EB" : "#1F2937", color: "#F9FAFB", whiteSpace: "pre-wrap", fontSize: "14px" }}>
               {msg.text}
             </div>
           ))}
 
           {sending && (
-            <div
-              style={{
-                alignSelf: "flex-start",
-                maxWidth: "80%",
-                padding: "10px 14px",
-                borderRadius: "12px",
-                background: "#1F2937",
-                color: "#9CA3AF",
-                fontSize: "14px",
-                fontStyle: "italic",
-              }}
-            >
+            <div style={{ alignSelf: "flex-start", maxWidth: "80%", padding: "10px 14px", borderRadius: "12px", background: "#1F2937", color: "#9CA3AF", fontSize: "14px", fontStyle: "italic" }}>
               AI tworzy odpowiedź...
             </div>
           )}
@@ -363,116 +317,61 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
             style={{ flex: 1, padding: "10px", resize: "vertical", fontFamily: "inherit" }}
             disabled={sending}
           />
-          <button
-            onClick={handleSend}
-            disabled={sending}
-            className="card-button"
-            style={{ background: "#2563EB" }}
-          >
+          <button onClick={handleSend} disabled={sending} className="card-button" style={{ background: "#2563EB" }}>
             {sending ? "..." : "Wyślij"}
           </button>
         </div>
       </div>
 
-      {siteHtml && (
-        <div
-          style={{
-            marginTop: "16px",
-            padding: "14px",
-            borderRadius: "16px",
-            border: "1px solid #2563EB",
-            background: "rgba(37,99,235,0.05)",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: "10px",
-              flexWrap: "wrap",
-              gap: "8px",
-            }}
-          >
-            <span style={{ fontSize: "13px", color: "#93C5FD", fontWeight: 700 }}>
-              🌐 Podgląd strony
-            </span>
+      {files.length > 0 && (
+        <div style={{ marginTop: "16px", padding: "14px", borderRadius: "16px", border: "1px solid #2563EB", background: "rgba(37,99,235,0.05)" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px", flexWrap: "wrap", gap: "8px" }}>
+            <span style={{ fontSize: "13px", color: "#93C5FD", fontWeight: 700 }}>🌐 Podgląd strony</span>
 
-            <div style={{ display: "flex", gap: "6px" }}>
-              <button
-                onClick={() => setView("preview")}
-                style={{
-                  padding: "6px 14px",
-                  borderRadius: "8px",
-                  border: "1px solid #374151",
-                  background: view === "preview" ? "#2563EB" : "transparent",
-                  color: "#F9FAFB",
-                  fontSize: "13px",
-                  cursor: "pointer",
-                }}
-              >
+            <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+              <button onClick={() => setView("preview")} style={{ padding: "6px 14px", borderRadius: "8px", border: "1px solid #374151", background: view === "preview" ? "#2563EB" : "transparent", color: "#F9FAFB", fontSize: "13px", cursor: "pointer" }}>
                 Podgląd
               </button>
-              <button
-                onClick={() => setView("code")}
-                style={{
-                  padding: "6px 14px",
-                  borderRadius: "8px",
-                  border: "1px solid #374151",
-                  background: view === "code" ? "#2563EB" : "transparent",
-                  color: "#F9FAFB",
-                  fontSize: "13px",
-                  cursor: "pointer",
-                }}
-              >
+              <button onClick={() => setView("code")} style={{ padding: "6px 14px", borderRadius: "8px", border: "1px solid #374151", background: view === "code" ? "#2563EB" : "transparent", color: "#F9FAFB", fontSize: "13px", cursor: "pointer" }}>
                 Kod źródłowy
               </button>
-              <button
-                onClick={handleDownload}
-                style={{
-                  padding: "6px 14px",
-                  borderRadius: "8px",
-                  border: "1px solid #374151",
-                  background: "transparent",
-                  color: "#D1D5DB",
-                  fontSize: "13px",
-                  cursor: "pointer",
-                }}
-              >
-                ⬇ Pobierz
+              <button onClick={handleDownloadZip} style={{ padding: "6px 14px", borderRadius: "8px", border: "1px solid #374151", background: "transparent", color: "#D1D5DB", fontSize: "13px", cursor: "pointer" }}>
+                ⬇ Pobierz ZIP
               </button>
             </div>
           </div>
 
           {view === "preview" ? (
             <iframe
-              srcDoc={siteHtml}
-              style={{
-                width: "100%",
-                height: "500px",
-                border: "1px solid #374151",
-                borderRadius: "12px",
-                background: "white",
-              }}
+              srcDoc={buildPreviewHtml(files)}
+              style={{ width: "100%", height: "500px", border: "1px solid #374151", borderRadius: "12px", background: "white" }}
               sandbox="allow-scripts"
             />
           ) : (
-            <textarea
-              readOnly
-              value={siteHtml}
-              style={{
-                width: "100%",
-                height: "500px",
-                border: "1px solid #374151",
-                borderRadius: "12px",
-                background: "#0B0F19",
-                color: "#93C5FD",
-                fontFamily: "monospace",
-                fontSize: "12px",
-                padding: "14px",
-                resize: "vertical",
-              }}
-            />
+            <div>
+              <div style={{ display: "flex", gap: "6px", marginBottom: "10px", flexWrap: "wrap" }}>
+                {files.map((f) => (
+                  <button
+                    key={f.name}
+                    onClick={() => setActiveFile(f.name)}
+                    style={{ padding: "5px 12px", borderRadius: "6px", border: "1px solid #374151", background: activeFile === f.name ? "#374151" : "transparent", color: "#F9FAFB", fontSize: "12px", cursor: "pointer" }}
+                  >
+                    {f.name}
+                  </button>
+                ))}
+                <button
+                  onClick={handleCopy}
+                  style={{ marginLeft: "auto", padding: "5px 12px", borderRadius: "6px", border: "1px solid #10B981", background: "transparent", color: "#10B981", fontSize: "12px", cursor: "pointer" }}
+                >
+                  {copied ? "✓ Skopiowano" : "📋 Kopiuj kod"}
+                </button>
+              </div>
+              <textarea
+                readOnly
+                value={activeFileContent}
+                style={{ width: "100%", height: "460px", border: "1px solid #374151", borderRadius: "12px", background: "#0B0F19", color: "#93C5FD", fontFamily: "monospace", fontSize: "12px", padding: "14px", resize: "vertical" }}
+              />
+            </div>
           )}
 
           <p style={{ marginTop: "10px", fontSize: "13px", color: "#9CA3AF" }}>
