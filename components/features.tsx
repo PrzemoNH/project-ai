@@ -27,6 +27,12 @@ export default function Features() {
               Zrozum programowanie w swoim tempie. AI tłumaczy każdy fragment
               kodu tak, jakbyś miał osobistego nauczyciela zawsze pod ręką.
             </p>
+            <ul className="feature-list">
+              <li>Start od podstaw</li>
+              <li>Tutoriale krok po kroku</li>
+              <li>Proste wyjaśnienia trudnych pojęć</li>
+              <li>Analiza i tłumaczenie błędów</li>
+            </ul>
             <Link href="/dashboard?mode=learn" className="card-link">
               Zacznij naukę →
             </Link>
@@ -48,6 +54,12 @@ export default function Features() {
               Masz wizję strony, gry albo aplikacji? Opisz ją, a AI zbuduje
               pierwszą wersję szybciej, niż zdążysz zaparzyć kawę.
             </p>
+            <ul className="feature-list">
+              <li>Strony internetowe</li>
+              <li>Aplikacje webowe</li>
+              <li>Proste gry</li>
+              <li>Generowanie gotowego kodu</li>
+            </ul>
             <Link href="/dashboard?mode=create" className="card-link">
               Zacznij tworzyć →
             </Link>
@@ -69,6 +81,12 @@ export default function Features() {
               Masz już coś stworzonego? Rozwijaj to dalej z AI jako partnerem,
               który rozumie Twój kod i pomaga iść o krok dalej.
             </p>
+            <ul className="feature-list">
+              <li>Architektura projektu</li>
+              <li>Refaktoryzacja kodu</li>
+              <li>Debugowanie</li>
+              <li>Optymalizacja wydajności</li>
+            </ul>
             <Link href="/dashboard?mode=design" className="card-link">
               Rozwijaj projekt →
             </Link>
