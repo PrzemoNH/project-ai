@@ -64,30 +64,41 @@ export async function POST(request: NextRequest) {
       { role: "user", parts: [{ text: promptText }] },
     ];
 
-    const response = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-goog-api-key": apiKey,
-        },
-        body: JSON.stringify({
-          system_instruction: {
-            parts: [{ text: systemInstruction }],
+    async function callGemini() {
+      return fetch(
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-goog-api-key": apiKey!,
           },
-          contents,
-        }),
-      }
-    );
+          body: JSON.stringify({
+            system_instruction: {
+              parts: [{ text: systemInstruction }],
+            },
+            contents,
+          }),
+        }
+      );
+    }
+
+    let response = await callGemini();
+
+    for (let attempt = 0; attempt < 2 && response.status === 503; attempt++) {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      response = await callGemini();
+    }
 
     if (!response.ok) {
       const errorText = await response.text();
-      return NextResponse.json(
-        { error: "Błąd AI: " + errorText },
-        { status: 500 }
-      );
+      const friendlyError =
+        response.status === 503
+          ? "Model AI jest chwilowo przeciążony. Spróbuj wysłać wiadomość ponownie za chwilę."
+          : "Błąd AI: " + errorText;
+      return NextResponse.json({ error: friendlyError }, { status: 500 });
     }
+
 
     const data = await response.json();
     const reply =
