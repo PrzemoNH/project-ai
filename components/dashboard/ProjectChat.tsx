@@ -185,6 +185,8 @@ export default function ProjectChat({ projectId, mode }: { projectId: string; mo
     }
 
     setSending(false);
+    wakeLockRef.current?.release?.();
+    wakeLockRef.current = null;
   }
 
   function handleCopy() {
