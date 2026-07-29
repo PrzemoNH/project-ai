@@ -124,6 +124,7 @@ export default function RecentProjects() {
                   borderRadius: "12px",
                   borderLeft: `4px solid ${color}`,
                   background: "rgba(255,255,255,0.03)",
+                  flexWrap: "wrap",
                 }}
               >
                 <span
@@ -140,16 +141,28 @@ export default function RecentProjects() {
                   {label}
                 </span>
 
-                <Link
-                  href={`/dashboard/project/${project.id}`}
-                  style={{ flex: 1, color: "#F9FAFB", textDecoration: "none", fontWeight: 700 }}
-                >
+                <span style={{ flex: 1, color: "#F9FAFB", fontWeight: 700 }}>
                   {project.name}
-                </Link>
+                </span>
 
                 <span style={{ color: "#D1D5DB", fontSize: "14px" }}>
                   {project.status}
                 </span>
+
+                <Link
+                  href={`/dashboard/project/${project.id}`}
+                  style={{
+                    background: "#2563EB",
+                    color: "#F9FAFB",
+                    textDecoration: "none",
+                    borderRadius: "8px",
+                    padding: "6px 14px",
+                    fontSize: "13px",
+                    fontWeight: 700,
+                  }}
+                >
+                  Otwórz
+                </Link>
 
                 <button
                   onClick={() => handleDelete(project.id)}
