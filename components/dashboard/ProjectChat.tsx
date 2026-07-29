@@ -136,7 +136,7 @@ export default function ProjectChat({ projectId, mode }: { projectId: string; mo
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, currentFiles: currentFilesText }),
+        body: JSON.stringify({ message: text, currentFiles: currentFilesText, mode }),
       });
 
       const data = await res.json();
@@ -294,9 +294,14 @@ export default function ProjectChat({ projectId, mode }: { projectId: string; mo
           ))}
 
           {sending && (
-            <div style={{ alignSelf: "flex-start", maxWidth: "80%", padding: "10px 14px", borderRadius: "12px", background: "#1F2937", color: "#9CA3AF", fontSize: "14px", fontStyle: "italic" }}>
-              AI tworzy odpowiedź...
+            <div style={{ alignSelf: "flex-start", maxWidth: "80%", padding: "10px 14px", borderRadius: "12px", background: "#1F2937", color: "#9CA3AF", fontSize: "14px", display: "flex", alignItems: "center", gap: "6px" }}>
+              <span>AI pracuje</span>
+              <span className="typing-dots">
+                <span></span><span></span><span></span>
+              </span>
             </div>
+          )}
+
           )}
 
           <div ref={bottomRef} />
