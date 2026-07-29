@@ -313,8 +313,6 @@ export default function ProjectChat({ projectId, mode }: { projectId: string; mo
             </div>
           )}
 
-          )}
-
           <div ref={bottomRef} />
         </div>
 
