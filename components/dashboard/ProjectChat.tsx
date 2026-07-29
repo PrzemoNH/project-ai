@@ -59,7 +59,7 @@ export default function ProjectChat({ projectId, mode }: { projectId: string; mo
   const [activeFile, setActiveFile] = useState("index.html");
   const [copied, setCopied] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
-
+  const wakeLockRef = useRef<any>(null);
   const [builderOpen, setBuilderOpen] = useState(false);
   const [what, setWhat] = useState(WHAT_OPTIONS[0].value);
   const [topic, setTopic] = useState("");
@@ -126,6 +126,15 @@ export default function ProjectChat({ projectId, mode }: { projectId: string; mo
     setMessages(withUserMessage);
     setInput("");
     setSending(true);
+
+    try {
+      if ("wakeLock" in navigator) {
+        wakeLockRef.current = await (navigator as any).wakeLock.request("screen");
+      }
+    } catch {
+      // brak wsparcia w przeglądarce — nic się nie dzieje, po prostu ekran może zgasnąć
+    }
+
 
     const currentFilesText =
       files.length > 0
