@@ -162,14 +162,52 @@ Włączone i skonfigurowane. To reguły na poziomie bazy danych, które pilnują
 - Tabela projects z RLS
 - Tworzenie i wyświetlanie projektów użytkownika
 
-### W planach
-- Ostylowanie listy projektów (obecnie "surowy" wygląd)
-- Edycja / usuwanie projektów
-- Połączenie kart trybów (Ucz się/Twórz/Projektuj) z realnym tworzeniem projektu danego typu
-- Rozróżnienie treści landing page vs dashboard (obecnie się częściowo powtarzają)
-- Wielojęzyczność (PL / DE / EN) — planowana po dokończeniu funkcji
-- ESLint (obecnie brak)
-- Włączenie "Leaked Password Protection" w Supabase
+### ✅ Gotowe
+- Landing page (marketingowy ton, sekcja "Od pomysłu do gotowego projektu")
+- Dashboard UI ze stylami
+- Rejestracja / logowanie / wylogowanie (Supabase Auth, z wymogami siły hasła)
+- Zabezpieczenie dashboardu przed niezalogowanymi (AuthGuard)
+- Tabela `projects` z RLS, zoptymalizowana pod wydajność
+- Pełny CRUD projektów (tworzenie, podgląd, edycja, usuwanie) z podstroną projektu
+- **Silnik AI generujący strony** — czat, Kreator promptu, podgląd na żywo, pobieranie HTML
+
+### ⏳ W planach
+- Wielojęzyczność (PL / DE / EN)
+- ESLint
+- Router wielu ról AI (Nauczyciel/Analityk/Projektant/Programista/Tester) — inspiracja z koncepcji "canvas-test"
+- Zapasowy dostawca AI (drugi klucz, automatyczne przełączanie przy limicie)
+
+---
+## Silnik AI budujący strony
+
+Wewnątrz każdego projektu (`/dashboard/project/[id]`) działa prawdziwy silnik AI, który generuje kompletne strony internetowe na podstawie opisu użytkownika.
+
+### `app/api/chat/route.ts`
+"Biuro pośredniczące" — jedyne miejsce, gdzie używany jest tajny klucz `GOOGLE_AI_API_KEY`. Odbiera wiadomość użytkownika (i opcjonalnie aktualny kod strony, jeśli to poprawka), wysyła zapytanie do Google Gemini (`gemini-3.5-flash`) z instrukcją systemową nakazującą zwracać czysty kod HTML, i odsyła odpowiedź.
+
+### `components/dashboard/ProjectChat.tsx`
+Interfejs czatu wewnątrz projektu. Zawiera:
+- **Kreator promptu** — panel z gotowymi opcjami (co budować, jakie technologie, temat, kolory, dodatkowe wymagania), który sam składa gotowy, dobrze sformułowany prompt do pola tekstowego
+- **Historia rozmowy** — zapisywana w kolumnie `content.messages` tabeli `projects`
+- **Podgląd strony na żywo** — wygenerowany kod HTML wyświetla się w `<iframe>` z `sandbox="allow-scripts"` (bezpieczny, ale pozwala na działanie stylów/skryptów wygenerowanej strony)
+- **Zakładka "Kod źródłowy"** — surowy podgląd wygenerowanego HTML
+- **Przycisk "Pobierz HTML"** — zapisuje wygenerowaną stronę jako plik na urządzenie użytkownika
+- Wygenerowana strona zapisywana jest w kolumnie `content.site_html`
+
+### Jak działa generowanie i poprawki
+1. Pierwsza wiadomość opisująca stronę → AI generuje kompletny dokument HTML od podstaw
+2. Kolejne wiadomości (np. "zmień kolor") → do zapytania dołączany jest aktualny kod strony (`currentHtml`), AI modyfikuje go i zwraca całość na nowo
+3. Funkcja `extractHtml()` wyszukuje w odpowiedzi AI blok od `<!DOCTYPE html>` do `</html>` — jeśli go znajdzie, aktualizuje podgląd; jeśli nie, traktuje odpowiedź jako zwykłą wiadomość tekstową
+
+### Zmienne środowiskowe (dodatkowe, względem Supabase)
+
+| Nazwa | Do czego służy | Sensitive? |
+|---|---|---|
+| `GOOGLE_AI_API_KEY` | klucz do Google Gemini (Google AI Studio) | ✅ Tak — bez prefiksu `NEXT_PUBLIC_`, tylko po stronie serwera |
+
+### Dostawca AI
+Google Gemini, model `gemini-3.5-flash`, darmowy plan przez Google AI Studio (aistudio.google.com). Model dobierany był po tym, jak `gemini-2.5-flash` przestał być dostępny dla nowych kluczy — jeśli w przyszłości pojawi się podobny błąd 404, sprawdź aktualną nazwę dostępnego modelu w dokumentacji Google.
+
 
 ---
 
