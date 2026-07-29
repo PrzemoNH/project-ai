@@ -286,14 +286,19 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
           <div ref={bottomRef} />
         </div>
 
-        <div style={{ display: "flex", gap: "8px" }}>
-          <input
-            type="text"
+        <div style={{ display: "flex", gap: "8px", alignItems: "flex-end" }}>
+          <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSend()}
-            placeholder="Opisz stronę lub poproś o zmianę..."
-            style={{ flex: 1, padding: "10px" }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+                handleSend();
+              }
+            }}
+            placeholder="Opisz stronę lub poproś o zmianę... (Ctrl+Enter, żeby wysłać)"
+            rows={3}
+            style={{ flex: 1, padding: "10px", resize: "vertical", fontFamily: "inherit" }}
             disabled={sending}
           />
           <button
@@ -305,6 +310,7 @@ export default function ProjectChat({ projectId }: { projectId: string }) {
             {sending ? "..." : "Wyślij"}
           </button>
         </div>
+
       </div>
     </div>
   );
