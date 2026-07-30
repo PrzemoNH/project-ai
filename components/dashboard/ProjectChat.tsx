@@ -65,6 +65,7 @@ export default function ProjectChat({ projectId, mode }: { projectId: string; mo
   const [topic, setTopic] = useState("");
   const [colors, setColors] = useState("");
   const [tech, setTech] = useState<string[]>(["HTML", "CSS"]);
+  const [extra, setExtra] = useState("");
   const [includeLogin, setIncludeLogin] = useState(false);
 
   useEffect(() => {
