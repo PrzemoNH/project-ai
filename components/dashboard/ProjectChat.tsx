@@ -65,7 +65,7 @@ export default function ProjectChat({ projectId, mode }: { projectId: string; mo
   const [topic, setTopic] = useState("");
   const [colors, setColors] = useState("");
   const [tech, setTech] = useState<string[]>(["HTML", "CSS"]);
-  const [extra, setExtra] = useState("");
+  const [includeLogin, setIncludeLogin] = useState(false);
 
   useEffect(() => {
     async function loadHistory() {
@@ -113,10 +113,14 @@ export default function ProjectChat({ projectId, mode }: { projectId: string; mo
     if (tech.length > 0) prompt += ` Wykorzystaj: ${tech.join(", ")}.`;
     if (colors.trim()) prompt += ` Kolorystyka: ${colors.trim()}.`;
     if (extra.trim()) prompt += ` Dodatkowo: ${extra.trim()}.`;
+    if (includeLogin) {
+      prompt += ` Dodaj panel logowania (formularz z e-mailem i hasłem) jako element wizualny strony.`;
+    }
 
     setInput(prompt);
     setBuilderOpen(false);
   }
+
 
   async function handleSend() {
     const text = input.trim();
@@ -269,6 +273,10 @@ export default function ProjectChat({ projectId, mode }: { projectId: string; mo
 
             <p style={{ fontSize: "13px", color: "#D1D5DB", marginBottom: "8px" }}>Temat / branża (opcjonalnie)</p>
             <input type="text" value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="np. kawiarnia, siłownia..." style={{ width: "100%", padding: "8px", marginBottom: "16px" }} />
+            <label style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "16px", fontSize: "13px", color: "#D1D5DB", cursor: "pointer" }}>
+              <input type="checkbox" checked={includeLogin} onChange={(e) => setIncludeLogin(e.target.checked)} />
+              Dodaj panel logowania (jako element demo strony)
+            </label>
 
             <p style={{ fontSize: "13px", color: "#D1D5DB", marginBottom: "8px" }}>Technologie / elementy</p>
             <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "16px" }}>
