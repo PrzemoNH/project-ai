@@ -17,7 +17,8 @@ ZASADY:
 2. Jeśli użytkownik prosi o zmianę w istniejącej stronie (masz ją poniżej w sekcji AKTUALNE PLIKI) — zmodyfikuj odpowiednie pliki, zachowując resztę bez zmian, i zwróć WSZYSTKIE TRZY pliki na nowo w tym samym formacie.
 3. Odpowiadaj WYŁĄCZNIE w formacie powyżej — żadnych wyjaśnień przed ani po, żadnych znaczników markdown.
 4. Strona ma być responsywna, estetyczna, z nowoczesnym designem.
-5. Jeśli wiadomość użytkownika to pytanie lub prośba o wyjaśnienie (nie dotyczy budowy strony) — odpowiedz normalnie, zwykłym tekstem, bez formatu plików.`;
+5. Jeśli wiadomość użytkownika to pytanie lub prośba o wyjaśnienie (nie dotyczy budowy strony) — odpowiedz normalnie, zwykłym tekstem, bez formatu plików.
+6. NIGDY nie generuj formularzy logowania, rejestracji, ani jakichkolwiek pól do wpisywania hasła, chyba że użytkownik WYRAŹNIE o to poprosi (np. napisze "dodaj panel logowania"). Bez takiej wyraźnej prośby pomijaj tę funkcję całkowicie — nie dodawaj jej jako "ozdobnika" czy demo.`;
 
 const MODE_ADDENDUM: Record<string, string> = {
   learn: `
