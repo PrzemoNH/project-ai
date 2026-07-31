@@ -35,17 +35,55 @@ TRYB: TWÓRZ — pisz czysty, produkcyjny kod bez zbędnych komentarzy, skup si�
 TRYB: PROJEKTUJ — zwróć szczególną uwagę na architekturę kodu, czytelność struktury i możliwość łatwego rozwijania w przyszłości.`,
 };
 
+const GEMINI_MODEL = "gemini-3.5-flash";
+const OPENROUTER_MODEL = "cohere/north-mini-code:free";
+
+async function callGemini(apiKey: string, systemInstruction: string, contents: any[]) {
+  return fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-goog-api-key": apiKey,
+      },
+      body: JSON.stringify({
+        system_instruction: { parts: [{ text: systemInstruction }] },
+        contents,
+      }),
+    }
+  );
+}
+
+async function callOpenRouter(apiKey: string, systemInstruction: string, userMessage: string) {
+  return fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: OPENROUTER_MODEL,
+      messages: [
+        { role: "system", content: systemInstruction },
+        { role: "user", content: userMessage },
+      ],
+    }),
+  });
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const { message, currentFiles, history, mode } = await request.json();
+    const { message, currentFiles, mode } = await request.json();
 
     if (!message || typeof message !== "string") {
       return NextResponse.json({ error: "Brak wiadomości" }, { status: 400 });
     }
 
-    const apiKey = process.env.GOOGLE_AI_API_KEY;
+    const geminiKey = process.env.GOOGLE_AI_API_KEY;
+    const openRouterKey = process.env.OPENROUTER_API_KEY;
 
-    if (!apiKey) {
+    if (!geminiKey) {
       return NextResponse.json(
         { error: "Brak klucza API po stronie serwera" },
         { status: 500 }
@@ -60,57 +98,19 @@ export async function POST(request: NextRequest) {
       promptText = `AKTUALNE PLIKI (zmodyfikuj zgodnie z prośbą, zwróć wszystkie trzy na nowo):\n\n${currentFiles}\n\nPROŚBA UŻYTKOWNIKA:\n${message}`;
     }
 
-    const contents = [
-      ...(Array.isArray(history) ? history : []),
-      { role: "user", parts: [{ text: promptText }] },
-    ];
+    const contents = [{ role: "user", parts: [{ text: promptText }] }];
 
-    async function callGemini() {
-      return fetch(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-goog-api-key": apiKey!,
-          },
-          body: JSON.stringify({
-            system_instruction: {
-              parts: [{ text: systemInstruction }],
-            },
-            contents,
-          }),
-        }
-      );
+    // Próba 1-3: Gemini
+    let response = await callGemini(geminiKey, systemInstruction, contents);
+
+    for (
+      let attempt = 0;
+      attempt < 2 && (response.status === 503 || response.status === 429);
+      attempt++
+    ) {
+      const waitMs = response.status === 429 ? 8000 : 1500;
+      await new Promise((resolve) => setTimeout(resolve, waitMs));
+      response = await callGemini(geminiKey, systemInstruction, contents);
     }
 
-    let response = await callGemini();
-
-    for (let attempt = 0; attempt < 2 && response.status === 503; attempt++) {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      response = await callGemini();
-    }
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      const friendlyError =
-        response.status === 503
-          ? "Model AI jest chwilowo przeciążony. Spróbuj wysłać wiadomość ponownie za chwilę."
-          : "Błąd AI: " + errorText;
-      return NextResponse.json({ error: friendlyError }, { status: 500 });
-    }
-
-
-    const data = await response.json();
-    const reply =
-      data.candidates?.[0]?.content?.parts?.[0]?.text ??
-      "Brak odpowiedzi od AI.";
-
-    return NextResponse.json({ reply });
-  } catch (err) {
-    return NextResponse.json(
-      { error: "Nieoczekiwany błąd serwera" },
-      { status: 500 }
-    );
-  }
-}
+    // Jeśli Gemini ostatecznie zawiódł, a m
