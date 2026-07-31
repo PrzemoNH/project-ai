@@ -100,7 +100,6 @@ export async function POST(request: NextRequest) {
 
     const contents = [{ role: "user", parts: [{ text: promptText }] }];
 
-    // Próba 1-3: Gemini
     let response = await callGemini(geminiKey, systemInstruction, contents);
 
     for (
@@ -113,4 +112,38 @@ export async function POST(request: NextRequest) {
       response = await callGemini(geminiKey, systemInstruction, contents);
     }
 
-    // Jeśli Gemini ostatecznie zawiódł, a m
+    if (!response.ok && openRouterKey) {
+      const fallbackResponse = await callOpenRouter(openRouterKey, systemInstruction, promptText);
+
+      if (fallbackResponse.ok) {
+        const data = await fallbackResponse.json();
+        const reply = data.choices?.[0]?.message?.content ?? "Brak odpowiedzi od AI.";
+        return NextResponse.json({ reply, provider: "openrouter" });
+      }
+    }
+
+    if (!response.ok) {
+      let friendlyError = "Wystąpił błąd AI. Spróbuj ponownie.";
+
+      if (response.status === 503) {
+        friendlyError = "Model AI jest chwilowo przeciążony. Spróbuj wysłać wiadomość ponownie za chwilę.";
+      } else if (response.status === 429) {
+        friendlyError = "Osiągnięto darmowy limit zapytań. Odczekaj około minuty i spróbuj ponownie.";
+      }
+
+      return NextResponse.json({ error: friendlyError }, { status: 500 });
+    }
+
+    const data = await response.json();
+    const reply =
+      data.candidates?.[0]?.content?.parts?.[0]?.text ??
+      "Brak odpowiedzi od AI.";
+
+    return NextResponse.json({ reply, provider: "gemini" });
+  } catch (err) {
+    return NextResponse.json(
+      { error: "Nieoczekiwany błąd serwera" },
+      { status: 500 }
+    );
+  }
+}
