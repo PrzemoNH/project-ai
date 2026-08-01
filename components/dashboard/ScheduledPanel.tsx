@@ -92,6 +92,8 @@ export default function ScheduledPanel({
     failed: "#DC2626",
   };
 
+  const buttonDisabled = saving || !prompt.trim() || !dateTime;
+
   return (
     <div
       style={{
@@ -135,9 +137,20 @@ export default function ScheduledPanel({
 
           <button
             onClick={handleSchedule}
-            disabled={saving || !prompt.trim() || !dateTime}
-            className="card-button"
-            style={{ background: "#7C3AED", width: "100%", marginBottom: "16px" }}
+            disabled={buttonDisabled}
+            style={{
+              background: "#7C3AED",
+              width: "100%",
+              marginBottom: "16px",
+              padding: "10px",
+              borderRadius: "10px",
+              border: "none",
+              opacity: buttonDisabled ? 0.5 : 1,
+              color: "#ffffff",
+              WebkitTextFillColor: "#ffffff",
+              fontWeight: 700,
+              cursor: buttonDisabled ? "default" : "pointer",
+            }}
           >
             {saving ? "Zapisywanie..." : "📅 Zaplanuj"}
           </button>
