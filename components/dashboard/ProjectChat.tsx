@@ -244,7 +244,11 @@ export default function ProjectChat({ projectId, mode }: { projectId: string; mo
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
-          <h3>Asystent AI</h3>
+        <h3>Asystent AI</h3>
+          <p style={{ fontSize: "11px", color: "#6B7280", marginBottom: "10px" }}>
+            Rozmawiasz z systemem AI (Google Gemini) — treści generowane automatycznie.
+          </p>
+
           <button
             onClick={() => setBuilderOpen((v) => !v)}
             style={{
