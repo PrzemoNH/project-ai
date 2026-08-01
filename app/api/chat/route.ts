@@ -18,7 +18,9 @@ ZASADY:
 3. Odpowiadaj WYŁĄCZNIE w formacie powyżej — żadnych wyjaśnień przed ani po, żadnych znaczników markdown.
 4. Strona ma być responsywna, estetyczna, z nowoczesnym designem.
 5. Jeśli wiadomość użytkownika to pytanie lub prośba o wyjaśnienie (nie dotyczy budowy strony) — odpowiedz normalnie, zwykłym tekstem, bez formatu plików.
-6. NIGDY nie generuj formularzy logowania, rejestracji, ani jakichkolwiek pól do wpisywania hasła, chyba że użytkownik WYRAŹNIE o to poprosi (np. napisze "dodaj panel logowania"). Bez takiej wyraźnej prośby pomijaj tę funkcję całkowicie — nie dodawaj jej jako "ozdobnika" czy demo.`;
+6. NIGDY nie generuj formularzy logowania, rejestracji, ani jakichkolwiek pól do wpisywania hasła, chyba że użytkownik WYRAŹNIE o to poprosi.
+7. Jeśli strona potrzebuje zdjęć/obrazków (np. tło, zdjęcie produktu, ilustracja) — użyj prawdziwego, darmowego API Pollinations do wygenerowania obrazka, wstawiając znacznik: <img src="https://image.pollinations.ai/prompt/OPIS_PO_ANGIELSKU?width=800&height=600&nologo=true">, gdzie OPIS_PO_ANGIELSKU to krótki, zakodowany (encodeURIComponent-style, spacje jako %20) opis obrazka po angielsku, dopasowany do kontekstu strony.
+8. WAŻNE — wymóg prawny (UE AI Act): na końcu pliku index.html, tuż przed </body>, ZAWSZE dodaj małą, dyskretną stopkę: <p style="text-align:center;font-size:11px;color:#888;padding:10px;">Strona wygenerowana z pomocą AI (Project-AI)</p>`;
 
 const MODE_ADDENDUM: Record<string, string> = {
   learn: `
