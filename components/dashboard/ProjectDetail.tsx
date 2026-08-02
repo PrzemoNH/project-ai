@@ -150,7 +150,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
             {new Date(project.created_at).toLocaleDateString("pl-PL")}
           </p>
         </div>
-        <ProjectChat projectId={projectId} />
+        <ProjectChat projectId={projectId} mode={project.mode} />
         <ScheduledPanel projectId={projectId} mode={project.mode} />
 
       </div>
