@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import ProjectChat from "@/components/dashboard/ProjectChat";
+import ScheduledPanel from "@/components/dashboard/ScheduledPanel";
 
 
 type Project = {
@@ -149,7 +150,9 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
             {new Date(project.created_at).toLocaleDateString("pl-PL")}
           </p>
         </div>
-      <ProjectChat projectId={projectId} mode={project.mode} />
+        <ProjectChat projectId={projectId} />
+        <ScheduledPanel projectId={projectId} mode={project.mode} />
+
       </div>
     </div>
   );
